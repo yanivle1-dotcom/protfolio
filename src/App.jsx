@@ -50,7 +50,7 @@ const App = () => {
         ]
       },
       about: {
-        title: "קצת מעבר לניהול מוצר",
+        title: "קצת מעבר לתפקיד",
         p1: "מה שמשך אותי לניהול מוצר הוא היופי שב-UX טוב - כשמוצר מרגיש אינטואיטיבי, חכם ופשוט עובד. אני אוהב לעצב חוויות שפותרות בעיות אמיתיות ועדיין מרגישות טבעיות ומהנות לשימוש. אני Builder בנשמה, חי ונושם את עולם ה-AI וה-No-Code.",
         p2: "כשאני לא בונה מוצרים, תמצאו אותי כנראה בחוץ: חורש סינגלים על אופני ההרים שלי, מטייל ברחבי הארץ, תופס גלים בים, או מתכנן את חופשת הסנובורד הבאה שלי. אני אוהב אתגרים - איפה שיש בלאגן וחוסר בהירות, שם אני מרגיש הכי בנוח לעשות סדר ולבנות מנועים שעובדים.",
         resumeBtn: "הורד קורות חיים",
@@ -144,7 +144,7 @@ const App = () => {
       }
     },
     en: {
-      nav: { about: "About", work: "Case Studies", builder: "Projects", experience: "Experience", methodology: "Method" },
+      nav: { about: "About", work: "Case Studies", builder: "Projects", experience: "Experience", methodology: "Methodology" },
       hero: {
         greeting: "Hello, I'm Yaniv.",
         role: "Senior Product Manager",
@@ -168,12 +168,12 @@ const App = () => {
         title: "AI & Side Projects",
         subtitle: "I don't just write specs, I build. Here are some of the tools and systems I've initiated and developed using Code and AI.",
         projects: [
-          { title: "Tax Refund Automation", desc: "Automated system streamlining the tax refund submission process.", icon: <FileText size={22} /> },
-          { title: "Smart Investment Tracker", desc: "Custom scraper and analytics tool for data-driven investment insights.", icon: <LineChart size={22} /> },
-          { title: "AI Children's Books", desc: "Platform for personalized books combining LLMs and AI illustration.", icon: <BookOpen size={22} /> },
-          { title: "E-Commerce Automations", desc: "Smart workflows for supply chain and inventory management.", icon: <ShoppingCart size={22} /> },
-          { title: "Instagram Bot", desc: "Code-based tool for managing organic engagement and automation.", icon: <Bot size={22} /> },
-          { title: "Home IoT Hub", desc: "Custom IoT solutions for automated home management and control.", icon: <Home size={22} /> }
+          { title: "Tax Refund Automation", desc: "An automated system that streamlines the tax refund submission process by intelligently parsing and extracting data from receipts.", icon: <FileText size={22} /> },
+          { title: "Smart Investment Tracker", desc: "A custom scraper and analytics tool that aggregates financial sentiment from forums to provide actionable, data-driven investment insights.", icon: <LineChart size={22} /> },
+          { title: "AI Children's Books", desc: "A personalized children's book generator combining LLMs for dynamic storytelling with Generative AI models for custom illustrations.", icon: <BookOpen size={22} /> },
+          { title: "E-Commerce Automations", desc: "Smart automation workflows designed to optimize supply chain management, inventory syncing, and order processing in dropshipping.", icon: <ShoppingCart size={22} /> },
+          { title: "Instagram Automation Bot", desc: "A code-based automation tool for managing organic Instagram engagement, automating interactions, and scaling DM outreach.", icon: <Bot size={22} /> },
+          { title: "Smart Home Automation", desc: "Custom-built IoT solutions and a centralized dashboard for automating home lighting, climate, and security systems.", icon: <Home size={22} /> }
         ]
       },
       work: {
@@ -188,7 +188,7 @@ const App = () => {
             challenge: "Cybersecurity students dropping out due to a lack of structure and graduates struggling to showcase expertise.",
             solution: "Designed 'Weekly Goals' for habit-building and 'Career AI' tools to generate data-driven CVs and LinkedIn profiles.",
             impact: "Massive increase in retention and immediate employability value for graduates through automated career support.",
-            artifacts: ["Kickoff Deck", "AI Integration Specs", "User Flows"]
+            artifacts: ["Kickoff Deck", "AI Specs", "User Flows"]
           },
           {
             id: "02",
@@ -257,7 +257,7 @@ const App = () => {
   const isRTL = lang === 'he';
 
   return (
-    <div dir={isRTL ? 'rtl' : 'ltr'} className={`${isDark ? 'bg-slate-950 text-slate-100' : 'bg-[#FDFBF9] text-slate-800'} min-h-screen font-sans transition-colors duration-500 selection:bg-slate-200 selection:text-black`}>
+    <div dir={isRTL ? 'rtl' : 'ltr'} className={`${isDark ? 'bg-slate-950 text-slate-100' : 'bg-[#FDFBF9] text-slate-800'} min-h-screen font-sans transition-colors duration-500 selection:bg-slate-200 selection:text-black overflow-x-hidden`}>
       <style>
         {`
           @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Assistant:wght@200;300;400;500;600;700&display=swap');
@@ -275,9 +275,11 @@ const App = () => {
         
         <div className="flex items-center gap-6 md:gap-10">
           <div className="hidden lg:flex gap-8">
-            {Object.keys(t.nav).map(key => (
-              <a key={key} href={`#${key}`} className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav[key]}</a>
-            ))}
+            <a href="#about" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.about}</a>
+            <a href="#work" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.work}</a>
+            <a href="#builder" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.builder}</a>
+            <a href="#experience" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.experience}</a>
+            <a href="#methodology" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.methodology}</a>
           </div>
           
           <div className="flex items-center gap-4 border-slate-300 rtl:border-r rtl:pr-4 ltr:border-l ltr:pl-4">
