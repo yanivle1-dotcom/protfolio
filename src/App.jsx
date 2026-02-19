@@ -5,13 +5,242 @@ import {
   BookOpen, ShoppingCart, Home, Phone, Moon, Sun, Github, Plus, Send, CheckCircle2
 } from 'lucide-react';
 
+// נתונים מחוץ לקומפוננטה למניעת רינדור מיותר ובעיות Scope
+const CONTENT_DATA = {
+  he: {
+    nav: { about: "אודות", work: "Case Studies", builder: "Projects", experience: "ניסיון", methodology: "מתודולוגיה" },
+    hero: {
+      greeting: "שלום, אני יניב.",
+      role: "Senior Product Manager",
+      whoAmI: "מי אני?",
+      paragraphs: [
+        "מנהל מוצר עם למעלה מ-12 שנות ניסיון בהובלת מחזור החיים המלא של מוצרים דיגיטליים מורכבים — מרעיונות ובעיות לא־מוגדרות, ועד מוצרים בשלים, מדידים ומייצרי ערך עסקי אמיתי.",
+        "החוזקה המרכזית שלי היא היכולת לפשט מורכבות: לקחת אתגרים טכנולוגיים, רגולטוריים ועסקיים, ולתרגם אותם לחוויות משתמש אינטואיטיביות ולמוצרים שאנשים באמת רוצים להשתמש בהם. הובלתי בניית מוצרי 0-1, הקמת MVPs, וסקיילינג של פלטפורמות גלובליות עם מיליוני משתמשים, תוך עבודה צמודה עם צוותי Engineering, Data, Design ו-Business.",
+        "בשנים האחרונות אני מתמקד עמוקות בעולמות ה-AI וה-GenAI — לא כהייפ, אלא ככלי פרודוקטיבי. אני עוסק בפרודוקטיזציה של יכולות AI, בבניית תהליכי עבודה חכמים ואוטומטיים, ובאבות-טיפוס מהירים באמצעות כלים כמו Claude ו-Lovable, במטרה לקצר זמן ל-Value ולייצר חוויות משתמש מתקדמות ומדידות.",
+        "כמנהל מוצר וכמנהיג, אני מתמחה בבנייה והובלה של צוותי מוצר חוצי-ארגון, בהגדרת חזון ברור, בתרגום אסטרטגיה ל-Roadmap מבוסס OKRs, ובהובלת ניסויים, A/B Testing ואופטימיזציה מתמדת של מדדים כמו המרות, ריטנשן ו-CSAT.",
+        "אני מאמין שמוצר מצוין נבנה בצומת שבין הבנת משתמש עמוקה, החלטות מבוססות נתונים, ויכולת ביצוע — מהר, חכם ועם סטנדרט גבוה."
+      ]
+    },
+    about: {
+      title: "קצת מעבר לתפקיד",
+      p1: "מה שמשך אותי לניהול מוצר הוא היופי שב-UX טוב - כשמוצר מרגיש אינטואיטיבי, חכם ופשוט עובד. אני אוהב לעצב חוויות שפותרות בעיות אמיתיות ועדיין מרגישות טבעיות ומהנות לשימוש. אני Builder בנשמה, חי ונושם את עולם ה-AI וה-No-Code.",
+      p2: "כשאני לא בונה מוצרים, תמצאו אותי כנראה בחוץ: חורש סינגלים על אופני ההרים שלי, מטייל ברחבי הארץ, תופס גלים בים, או מתכנן את חופשת הסנובורד הבאה שלי. אני אוהב אתגרים - איפה שיש בלאגן וחוסר בהירות, שם אני מרגיש הכי בנוח לעשות סדר ולבנות מנועים שעובדים.",
+      resumeBtn: "הורד קורות חיים",
+      hobbies: [
+        { id: 'mtb', name: "אופני הרים", Icon: Mountain },
+        { id: 'surf', name: "גלישה", Icon: Waves },
+        { id: 'snowboard', name: "סנובורד", Icon: Mountain },
+        { id: 'travel', name: "טיולים בארץ", Icon: Map }
+      ]
+    },
+    builder: {
+      title: "AI & Side Projects",
+      subtitle: "אני לא רק מאפיין, אני בונה. אלו חלק מהכלים והמערכות שיזמתי ופיתחתי בעצמי באמצעות קוד וכלי AI.",
+      projects: [
+        { title: "TaxFree Solutions", desc: "מערכת אוטומטית המפשטת ומייעלת את תהליך ההגשה של בקשות להחזרי מס.", Icon: FileText },
+        { title: "Smart Investment Tracker", desc: "סקרייפר ומערכת ניתוח סנטימנט פיננסי מפורומים לטובת החלטות השקעה.", Icon: LineChart },
+        { title: "AI Children's Books", desc: "פלטפורמה ליצירת ספרי ילדים מותאמים אישית המשלבת LLMs ו-Image Generation.", Icon: BookOpen },
+        { title: "E-Commerce Automations", desc: "אוטומציות חכמות לניהול שרשרת אספקה ומלאי בעולמות הדרופשיפינג.", Icon: ShoppingCart },
+        { title: "Instagram Bot", desc: "כלי מבוסס קוד לניהול מעורבות ואוטומציה של אינטראקציות באינסטגרם.", Icon: Bot },
+        { title: "Home IoT Hub", desc: "פיתוח פתרונות IoT מותאמים אישית לשליטה ואוטומציה של מערכות בבית.", Icon: Home }
+      ]
+    },
+    work: {
+      title: "Impact & Results",
+      labels: { challenge: "האתגר", solution: "הפתרון", impact: "האימפקט", artifacts: "תוצרים" },
+      projects: [
+        {
+          id: "01",
+          company: "IronCircle",
+          role: "Senior Product Manager",
+          description: "הובלת אסטרטגיית מוצר AI-Native בתחום ה-EdTech.",
+          challenge: "בעיית Retention אצל סטודנטים לסייבר וקושי של בוגרים להציג ניסיון מעשי למעסיקים.",
+          solution: "השקת 'Weekly Goals' ליצירת הרגלי למידה וכלי 'Career AI' המייצרים אוטומטית קורות חיים ופרופילי לינקדאין מבוססי דאטה.",
+          impact: "עלייה משמעותית ב-Retention וערך תעסוקתי מיידי לבוגרים דרך אוטומציה של ה-Value Chain.",
+          artifacts: ["Kickoff Deck", "AI Integration Specs", "User Flows"]
+        },
+        {
+          id: "02",
+          company: "GO7",
+          role: "Lead Product Manager",
+          description: "סקילינג של פלטפורמת White-Label ל-200 חברות תעופה.",
+          challenge: "תהליכי Onboarding איטיים ו-Booking Flow עם אחוזי נטישה גבוהים.",
+          solution: "ארכיטקטורה של פלטפורמת White-Label גמישה ואופטימיזציה אגרסיבית של משפך המכירה.",
+          impact: "עלייה של 20% בהמרות וקיצור דרמטי של ה-Time-to-Market עבור לקוחות B2B חדשים.",
+          artifacts: ["White-Label Strategy", "A/B Testing Framework"]
+        },
+        {
+          id: "03",
+          company: "Matrix / EL AL",
+          role: "Senior Product Manager",
+          description: "טרנספורמציה דיגיטלית מלאה של אל-על בתקופת הקורונה.",
+          challenge: "קריסת מערכות שירות הלקוחות והיעדר כלי Self-Service בזמן משבר עולמי.",
+          solution: "השקת אקו-סיסטם דיגיטלי חדש (אתר, אפליקציה, פורטלים) ואפיון מחדש של מערך ה'צור קשר' החכם.",
+          impact: "עלייה של 25% במכירות ישירות והורדת עומס דרמטית ממוקדי השירות הטלפוניים.",
+          artifacts: ["Detailed PRDs", "Architecture Docs", "Wireframes"]
+        },
+        {
+          id: "04",
+          company: "Migdal Insurance",
+          role: "Product Manager",
+          description: "בניית מערכת One-Stop-Shop ל-50,000 סוכני ביטוח.",
+          challenge: "סוכנים שעבדו על ריבוי מערכות Legacy מיושנות, מה שיצר איטיות וטעויות.",
+          solution: "אפיון והשקה של 'שולחן עבודה לסוכן' - פלטפורמה אחודה המפשטת תהליכי רגולציה וחיתום.",
+          impact: "אימוץ מלא של 50,000 סוכנים תוך רבעון אחד ושיפור דרמטי ביעילות התפעולית.",
+          artifacts: ["Adoption Strategy", "Regulatory Workflows"]
+        }
+      ]
+    },
+    experience: {
+      title: "ניסיון תעסוקתי",
+      jobs: [
+        { company: "IronCircle", role: "Senior Product Manager", period: "2025 — היום", desc: "אסטרטגיית AI-Native ומנועי Retention." },
+        { company: "GO7", role: "Lead Product Manager", period: "2023 — 2025", desc: "סקילינג PSS ו-White-Label גלובלי." },
+        { company: "Matrix / EL AL", role: "Senior Product Manager", period: "2020 — 2023", desc: "טרנספורמציה דיגיטלית ב-Scale." },
+        { company: "Migdal Insurance", role: "Product Manager", period: "2017 — 2020", desc: "מערכות B2B מורכבות ורגולציה." },
+        { company: "Visonic Group", role: "Project Manager", period: "2010 — 2017", desc: "ניהול פרויקטי R&D חומרה ותוכנה." }
+      ]
+    },
+    methodology: {
+      title: "Playbook",
+      steps: [
+        { title: "Discovery & Strategy", desc: "הבנת ה'למה', חקר משתמשים ותיעדוף אכזרי מבוסס ROI." },
+        { title: "Architecture & UX", desc: "ויזואליזציה של מסע המשתמש ובדיקת היתכנות טכנית מול R&D." },
+        { title: "PRD & Alignment", desc: "אפיון מדויק ויישור קו מול ה-Stakeholders לפני הפיתוח." },
+        { title: "Delivery & Growth", desc: "השקה מדורגת, מדידה מתמדת ואיטרציות מהירות מבוססות דאטה." }
+      ]
+    },
+    footer: {
+      talk: "בואו נדבר.",
+      desc: "בין אם מדובר באתגר מוצרי, הזדמנות תעסוקתית, או שסתם בא לכם לדבר על roadmap and user flows – אשמח לשמוע מכם.",
+      emailPlaceholder: "האימייל שלך",
+      messagePlaceholder: "מה תרצו לשתף איתי?",
+      sendBtn: "שלח הודעה",
+      successMsg: "ההודעה נשלחה בהצלחה! אצור קשר בהקדם.",
+      rights: "כל הזכויות שמורות ליניב לוי. 2026."
+    }
+  },
+  en: {
+    nav: { about: "About", work: "Case Studies", builder: "Projects", experience: "Experience", methodology: "Methodology" },
+    hero: {
+      greeting: "Hello, I'm Yaniv.",
+      role: "Senior Product Manager",
+      whoAmI: "Who am I?",
+      paragraphs: [
+        "A Product Manager with over 12 years of experience leading the full lifecycle of complex digital products—from vague ideas and undefined problems to mature, measurable products that drive real business value.",
+        "My core strength is simplifying complexity: taking technological, regulatory, and business challenges and translating them into intuitive user experiences that people actually want to use. I've led 0-to-1 product builds, MVP launches, and the scaling of global platforms for millions of users, working closely with Engineering, Data, Design, and Business teams.",
+        "Recently, I have been deeply focused on the AI and GenAI spaces—not as hype, but as powerful productivity engines. I specialize in AI productization, building smart automated workflows, and rapid prototyping using tools like Claude and Lovable to significantly reduce time-to-value and create advanced, measurable experiences.",
+        "As a product manager and leader, I excel at building and mentoring cross-functional product teams, defining a clear vision, translating strategy into OKR-driven roadmaps, and leading A/B testing and continuous optimization of key metrics like conversion rates, retention, and CSAT.",
+        "I strongly believe that a great product is built at the intersection of deep user understanding, data-driven decisions, and flawless execution—fast, smart, and with uncompromisingly high standards."
+      ]
+    },
+    about: {
+      title: "Beyond The Title",
+      p1: "What drew me to product management is the beauty of good UX—when a product feels intuitive, thoughtful, and simply works. I love shaping experiences that solve real problems while feeling natural. I'm a builder at heart, living and breathing the AI ecosystem.",
+      p2: "When I’m not building products, I'm probably outdoors: hitting the trails on my mountain bike, traveling across Israel, surfing, or planning my next snowboarding trip. I thrive on challenges—wherever there's chaos, I'm at my best creating order.",
+      resumeBtn: "Download Resume",
+      hobbies: [
+        { id: 'mtb', name: "Mountain Biking", Icon: Mountain },
+        { id: 'surf', name: "Surfing", Icon: Waves },
+        { id: 'snowboard', name: "Snowboarding", Icon: Mountain },
+        { id: 'travel', name: "Traveling", Icon: Map }
+      ]
+    },
+    builder: {
+      title: "AI & Side Projects",
+      subtitle: "I don't just write specs, I build. These are some of the tools and systems I've developed using Code and AI.",
+      projects: [
+        { title: "Tax Refund Automation", desc: "An automated system streamlining the tax refund submission process.", Icon: FileText },
+        { title: "Smart Investment Tracker", desc: "Custom scraper and analytics tool for data-driven investment insights.", Icon: LineChart },
+        { title: "AI Children's Books", desc: "Platform for personalized books combining LLMs and AI illustration.", Icon: BookOpen },
+        { title: "E-Commerce Automations", desc: "Smart workflows for supply chain and inventory management.", Icon: ShoppingCart },
+        { title: "Instagram Bot", desc: "Code-based tool for managing organic engagement and automation.", Icon: Bot },
+        { title: "Home IoT Hub", desc: "Custom IoT solutions for automated home management and control.", Icon: Home }
+      ]
+    },
+    work: {
+      title: "Impact & Results",
+      labels: { challenge: "Challenge", solution: "Solution", impact: "Impact", artifacts: "Artifacts" },
+      projects: [
+        {
+          id: "01",
+          company: "IronCircle",
+          role: "Senior Product Manager",
+          description: "Leading AI-Native product strategy in EdTech.",
+          challenge: "Cybersecurity students dropping out due to lack of structure and graduates struggling to showcase expertise.",
+          solution: "Designed 'Weekly Goals' for habit-building and 'Career AI' tools to generate data-driven CVs and LinkedIn profiles.",
+          impact: "Massive increase in retention and immediate employability value for graduates through automated career support.",
+          artifacts: ["Kickoff Deck", "AI Integration Specs", "User Flows"]
+        },
+        {
+          id: "02",
+          company: "GO7",
+          role: "Lead Product Manager",
+          description: "Scaling a B2B2C PSS platform serving 200 airlines.",
+          challenge: "Slow B2B onboarding and a Booking Flow suffering from high drop-off rates.",
+          solution: "Architected a flexible White-Label platform and aggressively optimized the conversion funnel.",
+          impact: "Achieved a 20% increase in conversion rates and drastically shortened Time-to-Market.",
+          artifacts: ["White-Label Strategy", "A/B Testing Framework"]
+        },
+        {
+          id: "03",
+          company: "Matrix / EL AL",
+          role: "Senior Product Manager",
+          description: "Leading enterprise digital transformation during COVID-19.",
+          challenge: "Legacy platforms collapsing under load and a lack of digital self-service for passengers.",
+          solution: "Launched a new digital ecosystem and redesigned the smart 'Contact Us' funnel with deep CRM integration.",
+          impact: "Drove a 25% increase in direct sales and reduced call center load via smart automation.",
+          artifacts: ["Detailed PRDs", "Architecture Migration", "Wireframes"]
+        },
+        {
+          id: "04",
+          company: "Migdal Insurance",
+          role: "Product Manager",
+          description: "Building a B2B One-Stop-Shop for 50,000 agents.",
+          challenge: "Agents navigating fragmented legacy systems, causing slow processing and regulatory friction.",
+          solution: "Designed and launched the 'Agent Desktop' to centralize workflows and simplify regulatory underwriting.",
+          impact: "Full adoption by 50,000+ agents in one quarter and significant operational efficiency gains.",
+          artifacts: ["Adoption Strategy", "Regulatory Workflows"]
+        }
+      ]
+    },
+    experience: {
+      title: "Career Timeline",
+      jobs: [
+        { company: "IronCircle", role: "Senior Product Manager", period: "2025 — Present", desc: "AI-Native strategy and retention engines." },
+        { company: "GO7", role: "Lead Product Manager", period: "2023 — 2025", desc: "Global PSS scale and White-Label platform." },
+        { company: "Matrix / EL AL", role: "Senior Product Manager", period: "2020 — 2023", desc: "Enterprise-wide digital transformation." },
+        { company: "Migdal Insurance", role: "Product Manager", period: "2017 — 2020", desc: "Complex B2B platforms and Insurtech." },
+        { company: "Visonic Group", role: "Project Manager", period: "2010 — 2017", desc: "End-to-end hardware & software R&D." }
+      ]
+    },
+    methodology: {
+      title: "My Framework",
+      steps: [
+        { title: "Discovery & Strategy", desc: "Identify the 'Why', user research, and ruthless ROI-based prioritization." },
+        { title: "Architecture & UX", desc: "Visualizing journeys, technical feasibility checks, and actionable wireframes." },
+        { title: "PRD & Alignment", desc: "Clear specifications and total stakeholder alignment before development starts." },
+        { title: "Delivery & Growth", desc: "Phased releases, continuous measurement, and rapid data-driven iterations." }
+      ]
+    },
+    footer: {
+      talk: "Let's Talk.",
+      desc: "Whether it's a product challenge, a job opportunity, or you just want to talk about roadmap and user flows – I'd love to hear from you.",
+      emailPlaceholder: "your@email.com",
+      messagePlaceholder: "What would you like to share with me?",
+      sendBtn: "Send Message",
+      successMsg: "Message sent successfully! I'll get back to you soon.",
+      rights: "© 2026 Yaniv Levi."
+    }
+  }
+};
+
 const App = () => {
   const [lang, setLang] = useState('he');
   const [isDark, setIsDark] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   
-  // Form State
   const [formData, setFormData] = useState({ email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -25,7 +254,6 @@ const App = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Mocking an email sending process
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
@@ -34,226 +262,7 @@ const App = () => {
     }, 1500);
   };
 
-  const content = {
-    he: {
-      nav: { about: "אודות", work: "Case Studies", builder: "Projects", experience: "ניסיון", methodology: "מתודולוגיה" },
-      hero: {
-        greeting: "שלום, אני יניב.",
-        role: "Senior Product Manager",
-        whoAmI: "מי אני?",
-        paragraphs: [
-          "מנהל מוצר עם למעלה מ-12 שנות ניסיון בהובלת מחזור החיים המלא של מוצרים דיגיטליים מורכבים — מרעיונות ובעיות לא־מוגדרות, ועד מוצרים בשלים, מדידים ומייצרי ערך עסקי אמיתי.",
-          "החוזקה המרכזית שלי היא היכולת לפשט מורכבות: לקחת אתגרים טכנולוגיים, רגולטוריים ועסקיים, ולתרגם אותם לחוויות משתמש אינטואיטיביות ולמוצרים שאנשים באמת רוצים להשתמש בהם. הובלתי בניית מוצרי 0-1, הקמת MVPs, וסקיילינג של פלטפורמות גלובליות עם מיליוני משתמשים, תוך עבודה צמודה עם צוותי Engineering, Data, Design ו-Business.",
-          "בשנים האחרונות אני מתמקד עמוקות בעולמות ה-AI וה-GenAI — לא כהייפ, אלא ככלי פרודוקטיבי. אני עוסק בפרודוקטיזציה של יכולות AI, בבניית תהליכי עבודה חכמים ואוטומטיים, ובאבות-טיפוס מהירים באמצעות כלים כמו Claude ו-Lovable, במטרה לקצר זמן ל-Value ולייצר חוויות משתמש מתקדמות ומדידות.",
-          "כמנהל מוצר וכמנהיג, אני מתמחה בבנייה והובלה של צוותי מוצר חוצי-ארגון, בהגדרת חזון ברור, בתרגום אסטרטגיה ל-Roadmap מבוסס OKRs, ובהובלת ניסויים, A/B Testing ואופטימיזציה מתמדת של מדדים כמו המרות, ריטנשן ו-CSAT.",
-          "אני מאמין שמוצר מצוין נבנה בצומת שבין הבנת משתמש עמוקה, החלטות מבוססות נתונים, ויכולת ביצוע — מהר, חכם ועם סטנדרט גבוה."
-        ]
-      },
-      about: {
-        title: "קצת מעבר לתפקיד",
-        p1: "מה שמשך אותי לניהול מוצר הוא היופי שב-UX טוב - כשמוצר מרגיש אינטואיטיבי, חכם ופשוט עובד. אני אוהב לעצב חוויות שפותרות בעיות אמיתיות ועדיין מרגישות טבעיות ומהנות לשימוש. אני Builder בנשמה, חי ונושם את עולם ה-AI וה-No-Code.",
-        p2: "כשאני לא בונה מוצרים, תמצאו אותי כנראה בחוץ: חורש סינגלים על אופני ההרים שלי, מטייל ברחבי הארץ, תופס גלים בים, או מתכנן את חופשת הסנובורד הבאה שלי. אני אוהב אתגרים - איפה שיש בלאגן וחוסר בהירות, שם אני מרגיש הכי בנוח לעשות סדר ולבנות מנועים שעובדים.",
-        resumeBtn: "הורד קורות חיים",
-        hobbies: { mtb: "אופני הרים", surf: "גלישה", snowboard: "סנובורד", travel: "טיולים בארץ" }
-      },
-      builder: {
-        title: "AI & Side Projects",
-        subtitle: "אני לא רק מאפיין, אני בונה. אלו חלק מהכלים והמערכות שיזמתי ופיתחתי בעצמי באמצעות קוד וכלי AI.",
-        projects: [
-          { title: "TaxFree Solutions", desc: "מערכת אוטומטית המפשטת ומייעלת את תהליך ההגשה של בקשות להחזרי מס.", icon: <FileText size={22} /> },
-          { title: "Smart Investment Tracker", desc: "סקרייפר ומערכת ניתוח סנטימנט פיננסי מפורומים לטובת החלטות השקעה.", icon: <LineChart size={22} /> },
-          { title: "AI Children's Books", desc: "פלטפורמה ליצירת ספרי ילדים מותאמים אישית המשלבת LLMs ו-Image Generation.", icon: <BookOpen size={22} /> },
-          { title: "E-Commerce Automations", desc: "אוטומציות חכמות לניהול שרשרת אספקה ומלאי בעולמות הדרופשיפינג.", icon: <ShoppingCart size={22} /> },
-          { title: "Instagram Bot", desc: "כלי מבוסס קוד לניהול מעורבות ואוטומציה של אינטראקציות באינסטגרם.", icon: <Bot size={22} /> },
-          { title: "Home IoT Hub", desc: "פיתוח פתרונות IoT מותאמים אישית לשליטה ואוטומציה של מערכות בבית.", icon: <Home size={22} /> }
-        ]
-      },
-      work: {
-        title: "Product Case Studies",
-        labels: { challenge: "האתגר", solution: "הפתרון", impact: "האימפקט", artifacts: "תוצרים" },
-        projects: [
-          {
-            id: "01",
-            company: "IronCircle",
-            role: "Senior Product Manager",
-            description: "הובלת אסטרטגיית מוצר AI-Native בתחום ה-EdTech.",
-            challenge: "בעיית Retention אצל סטודנטים לסייבר וקושי של בוגרים להציג ניסיון מעשי למעסיקים.",
-            solution: "השקת 'Weekly Goals' ליצירת הרגלי למידה וכלי 'Career AI' המייצרים אוטומטית קורות חיים ופרופילי לינקדאין מבוססי דאטה.",
-            impact: "עלייה משמעותית ב-Retention וערך תעסוקתי מיידי לבוגרים דרך אוטומציה של ה-Value Chain.",
-            artifacts: ["Kickoff Deck", "AI Integration Specs", "User Flows"]
-          },
-          {
-            id: "02",
-            company: "GO7",
-            role: "Lead Product Manager",
-            description: "סקילינג של פלטפורמת White-Label ל-200 חברות תעופה.",
-            challenge: "תהליכי Onboarding איטיים ו-Booking Flow עם אחוזי נטישה גבוהים.",
-            solution: "ארכיטקטורה של פלטפורמת White-Label גמישה ואופטימיזציה אגרסיבית של משפך המכירה.",
-            impact: "עלייה של 20% בהמרות וקיצור דרמטי של ה-Time-to-Market עבור לקוחות B2B חדשים.",
-            artifacts: ["White-Label Strategy", "A/B Testing Framework"]
-          },
-          {
-            id: "03",
-            company: "Matrix / EL AL",
-            role: "Senior Product Manager",
-            description: "טרנספורמציה דיגיטלית מלאה של אל-על בתקופת הקורונה.",
-            challenge: "קריסת מערכות שירות הלקוחות והיעדר כלי Self-Service בזמן משבר עולמי.",
-            solution: "השקת אקו-סיסטם דיגיטלי חדש (אתר, אפליקציה, פורטלים) ואפיון מחדש של מערך ה'צור קשר' החכם.",
-            impact: "עלייה של 25% במכירות ישירות והורדת עומס דרמטית ממוקדי השירות הטלפוניים.",
-            artifacts: ["Detailed PRDs", "Architecture Docs", "Wireframes"]
-          },
-          {
-            id: "04",
-            company: "Migdal Insurance",
-            role: "Product Manager",
-            description: "בניית מערכת One-Stop-Shop ל-50,000 סוכני ביטוח.",
-            challenge: "סוכנים שעבדו על ריבוי מערכות Legacy מיושנות, מה שיצר איטיות וטעויות.",
-            solution: "אפיון והשקה של 'שולחן עבודה לסוכן' - פלטפורמה אחודה המפשטת תהליכי רגולציה וחיתום.",
-            impact: "אימוץ מלא של 50,000 סוכנים תוך רבעון אחד ושיפור דרמטי ביעילות התפעולית.",
-            artifacts: ["Adoption Strategy", "Regulatory Workflows"]
-          }
-        ]
-      },
-      experience: {
-        title: "מסלול קריירה",
-        jobs: [
-          { company: "IronCircle", role: "Senior Product Manager", period: "2025 — היום", desc: "אסטרטגיית AI-Native ומנועי Retention." },
-          { company: "GO7", role: "Lead Product Manager", period: "2023 — 2025", desc: "סקילינג PSS ו-White-Label גלובלי." },
-          { company: "Matrix / EL AL", role: "Senior Product Manager", period: "2020 — 2023", desc: "טרנספורמציה דיגיטלית ב-Scale." },
-          { company: "Migdal Insurance", role: "Product Manager", period: "2017 — 2020", desc: "מערכות B2B מורכבות ורגולציה." },
-          { company: "Visonic Group", role: "Project Manager", period: "2010 — 2017", desc: "ניהול פרויקטי R&D חומרה ותוכנה." }
-        ]
-      },
-      methodology: {
-        title: "המתודולוגיה שלי",
-        steps: [
-          { title: "Discovery & Strategy", desc: "הבנת ה'למה', חקר משתמשים ותיעדוף אכזרי מבוסס ROI." },
-          { title: "Architecture & UX", desc: "ויזואליזציה של מסע המשתמש ובדיקת היתכנות טכנית מול R&D." },
-          { title: "PRD & Alignment", desc: "אפיון מדויק ויישור קו מול ה-Stakeholders לפני הפיתוח." },
-          { title: "Delivery & Growth", desc: "השקה מדורגת, מדידה מתמדת ואיטרציות מהירות מבוססות דאטה." }
-        ]
-      },
-      footer: {
-        talk: "בואו נדבר.",
-        desc: "בין אם מדובר באתגר מוצרי, הזדמנות תעסוקתית, או שסתם בא לכם לדבר על roadmap and user flows – אשמח לשמוע מכם.",
-        emailPlaceholder: "האימייל שלך",
-        messagePlaceholder: "מה תרצו לשתף איתי?",
-        sendBtn: "שלח הודעה",
-        successMsg: "ההודעה נשלחה בהצלחה! אצור קשר בהקדם.",
-        rights: "כל הזכויות שמורות ליניב לוי. 2026."
-      }
-    },
-    en: {
-      nav: { about: "About", work: "Case Studies", builder: "Projects", experience: "Experience", methodology: "Methodology" },
-      hero: {
-        greeting: "Hello, I'm Yaniv.",
-        role: "Senior Product Manager",
-        whoAmI: "Who am I?",
-        paragraphs: [
-          "A Product Manager with over 12 years of experience leading the full lifecycle of complex digital products—from vague ideas and undefined problems to mature, measurable products that drive real business value.",
-          "My core strength is simplifying complexity: taking technological, regulatory, and business challenges and translating them into intuitive user experiences that people actually want to use. I've led 0-to-1 product builds, MVP launches, and the scaling of global platforms for millions of users, working closely with Engineering, Data, Design, and Business teams.",
-          "Recently, I have been deeply focused on the AI and GenAI spaces—not as hype, but as powerful productivity engines. I specialize in AI productization, building smart automated workflows, and rapid prototyping using tools like Claude and Lovable to significantly reduce time-to-value and create advanced, measurable experiences.",
-          "As a product manager and leader, I excel at building and mentoring cross-functional product teams, defining a clear vision, translating strategy into OKR-driven roadmaps, and leading A/B testing and continuous optimization of key metrics like conversion rates, retention, and CSAT.",
-          "I strongly believe that a great product is built at the intersection of deep user understanding, data-driven decisions, and flawless execution—fast, smart, and with uncompromisingly high standards."
-        ]
-      },
-      about: {
-        title: "Beyond The Title",
-        p1: "What drew me to product management is the beauty of good UX—when a product feels intuitive, thoughtful, and simply works. I love shaping experiences that solve real problems while feeling natural. I'm a builder at heart, living and breathing the AI ecosystem.",
-        p2: "When I’m not building products, I'm probably outdoors: hitting the trails on my mountain bike, traveling across Israel, surfing, or planning my next snowboarding trip. I thrive on challenges—wherever there's chaos, I'm at my best creating order.",
-        resumeBtn: "Download Resume",
-        hobbies: { mtb: "Mountain Biking", surf: "Surfing", snowboard: "Snowboarding", travel: "Traveling" }
-      },
-      builder: {
-        title: "AI & Side Projects",
-        subtitle: "I don't just write specs, I build. Here are some of the tools and systems I've initiated and developed using Code and AI.",
-        projects: [
-          { title: "Tax Refund Automation", desc: "An automated system that streamlines the tax refund submission process by intelligently parsing and extracting data from receipts.", icon: <FileText size={22} /> },
-          { title: "Smart Investment Tracker", desc: "A custom scraper and analytics tool that aggregates financial sentiment from forums to provide actionable, data-driven investment insights.", icon: <LineChart size={22} /> },
-          { title: "AI Children's Books", desc: "A personalized children's book generator combining LLMs for dynamic storytelling with Generative AI models for custom illustrations.", icon: <BookOpen size={22} /> },
-          { title: "E-Commerce Automations", desc: "Smart automation workflows designed to optimize supply chain management, inventory syncing, and order processing in dropshipping.", icon: <ShoppingCart size={22} /> },
-          { title: "Instagram Automation Bot", desc: "A code-based automation tool for managing organic Instagram engagement, automating interactions, and scaling DM outreach.", icon: <Bot size={22} /> },
-          { title: "Smart Home Automation", desc: "Custom-built IoT solutions and a centralized dashboard for automating home lighting, climate, and security systems.", icon: <Home size={22} /> }
-        ]
-      },
-      work: {
-        title: "Case Studies",
-        labels: { challenge: "Challenge", solution: "Solution", impact: "Impact", artifacts: "Artifacts" },
-        projects: [
-          {
-            id: "01",
-            company: "IronCircle",
-            role: "Senior Product Manager",
-            description: "Leading AI-Native product strategy in EdTech. From feature-gap to market leader.",
-            challenge: "Cybersecurity students dropping out due to a lack of structure and graduates struggling to showcase expertise.",
-            solution: "Designed 'Weekly Goals' for habit-building and 'Career AI' tools to generate data-driven CVs and LinkedIn profiles.",
-            impact: "Massive increase in retention and immediate employability value for graduates through automated career support.",
-            artifacts: ["Kickoff Deck", "AI Specs", "User Flows"]
-          },
-          {
-            id: "02",
-            company: "GO7",
-            role: "Lead Product Manager",
-            description: "Scaling a B2B2C PSS platform serving 200 airlines.",
-            challenge: "Slow B2B onboarding and a Booking Flow suffering from high drop-off rates.",
-            solution: "Architected a flexible White-Label platform and aggressively optimized the conversion funnel.",
-            impact: "Achieved a 20% increase in conversion rates and drastically shortened Time-to-Market.",
-            artifacts: ["White-Label Strategy", "A/B Testing Framework"]
-          },
-          {
-            id: "03",
-            company: "Matrix / EL AL",
-            role: "Senior Product Manager",
-            description: "Leading enterprise digital transformation during COVID-19.",
-            challenge: "Legacy platforms collapsing under load and a lack of digital self-service for passengers.",
-            solution: "Launched a new digital ecosystem and redesigned the smart 'Contact Us' funnel with deep CRM integration.",
-            impact: "Drove 25% increase in direct sales and reduced call center load via smart automation.",
-            artifacts: ["Detailed PRDs", "Architecture Migration", "Wireframes"]
-          },
-          {
-            id: "04",
-            company: "Migdal Insurance",
-            role: "Product Manager",
-            description: "Building a B2B One-Stop-Shop for 50,000 agents.",
-            challenge: "Agents navigating fragmented legacy systems, causing slow processing and regulatory friction.",
-            solution: "Designed and launched the 'Agent Desktop' to centralize workflows and simplify regulatory underwriting.",
-            impact: "Full adoption by 50,000+ agents in one quarter and significant operational efficiency gains.",
-            artifacts: ["Adoption Strategy", "Regulatory Workflows"]
-          }
-        ]
-      },
-      experience: {
-        title: "Career Timeline",
-        jobs: [
-          { company: "IronCircle", role: "Senior Product Manager", period: "2025 — Present", desc: "AI-Native strategy and retention engines." },
-          { company: "GO7", role: "Lead Product Manager", period: "2023 — 2025", desc: "Global PSS scale and White-Label platform." },
-          { company: "Matrix / EL AL", role: "Senior Product Manager", period: "2020 — 2023", desc: "Enterprise-wide digital transformation." },
-          { company: "Migdal Insurance", role: "Product Manager", period: "2017 — 2020", desc: "Complex B2B platforms and Insurtech." },
-          { company: "Visonic Group", role: "Project Manager", period: "2010 — 2017", desc: "End-to-end hardware & software R&D." }
-        ]
-      },
-      methodology: {
-        title: "My Framework",
-        steps: [
-          { title: "Discovery & Strategy", desc: "Identify the 'Why', user research, and ruthless ROI-based prioritization." },
-          { title: "Architecture & UX", desc: "Visualizing journeys, technical feasibility checks, and actionable wireframes." },
-          { title: "PRD & Alignment", desc: "Clear specifications and total stakeholder alignment before development starts." },
-          { title: "Delivery & Growth", desc: "Phased releases, continuous measurement, and rapid data-driven iterations." }
-        ]
-      },
-      footer: {
-        talk: "Let's Talk.",
-        desc: "Whether it's a product challenge, a job opportunity, or you just want to talk about roadmap and user flows – I'd love to hear from you.",
-        emailPlaceholder: "your@email.com",
-        messagePlaceholder: "What would you like to share with me?",
-        sendBtn: "Send Message",
-        successMsg: "Message sent successfully! I'll get back to you soon.",
-        rights: "© 2026 Yaniv Levi."
-      }
-    }
-  };
-
-  const t = content[lang];
+  const t = CONTENT_DATA[lang] || CONTENT_DATA.he;
   const isRTL = lang === 'he';
 
   return (
@@ -275,15 +284,13 @@ const App = () => {
         
         <div className="flex items-center gap-6 md:gap-10">
           <div className="hidden lg:flex gap-8">
-            <a href="#about" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.about}</a>
-            <a href="#work" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.work}</a>
-            <a href="#builder" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.builder}</a>
-            <a href="#experience" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.experience}</a>
-            <a href="#methodology" className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav.methodology}</a>
+            {Object.keys(t.nav).map(key => (
+              <a key={key} href={`#${key}`} className="font-sans text-xs font-bold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav[key]}</a>
+            ))}
           </div>
           
           <div className="flex items-center gap-4 border-slate-300 rtl:border-r rtl:pr-4 ltr:border-l ltr:pl-4">
-             <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full hover:bg-slate-500/10 transition">
+             <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full hover:bg-slate-500/10 transition" aria-label="Toggle Dark Mode">
                {isDark ? <Sun size={18} /> : <Moon size={18} />}
              </button>
              <button onClick={() => setLang(lang === 'he' ? 'en' : 'he')} className={`flex items-center gap-2 px-3 py-1 rounded border ${isDark ? 'border-slate-800' : 'border-slate-200'} hover:border-slate-400 transition font-sans text-[10px] font-bold tracking-widest uppercase`}>
@@ -299,7 +306,7 @@ const App = () => {
 
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 relative pt-20 max-w-6xl mx-auto">
-        <div className="space-y-8">
+        <div className="space-y-8 text-start">
           <p className="font-handwriting text-4xl md:text-5xl opacity-50 smooth-reveal" style={{animationDelay: '0.1s'}}>{t.hero.greeting}</p>
           <h1 className="font-handwriting text-5xl md:text-7xl font-bold smooth-reveal tracking-wide" style={{animationDelay: '0.2s'}}>{t.hero.role}</h1>
           <div className={`w-16 h-[2px] ${isDark ? 'bg-white' : 'bg-slate-900'} smooth-reveal`} style={{animationDelay: '0.3s'}}></div>
@@ -311,7 +318,7 @@ const App = () => {
             ))}
           </div>
 
-          <div className="pt-12 smooth-reveal" style={{animationDelay: '0.6s'}}>
+          <div className="pt-12 smooth-reveal text-center" style={{animationDelay: '0.6s'}}>
             <a href="#about" className="animate-bounce inline-block opacity-30 hover:opacity-100 transition"><ArrowDown size={32} strokeWidth={1} /></a>
           </div>
         </div>
@@ -324,11 +331,16 @@ const App = () => {
           <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
             <div className="md:w-1/3 w-full max-w-sm">
               <div className={`aspect-[3/4] ${isDark ? 'bg-slate-800' : 'bg-slate-100'} rounded-2xl overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl group`}>
-                <img src="1749387739889.jpg" alt="Yaniv Levi" className="w-full h-full object-cover scale-105 group-hover:scale-100 transition duration-700" />
+                <img 
+                    src="/1749387739889.jpg" 
+                    alt="Yaniv Levi" 
+                    className="w-full h-full object-cover scale-105 group-hover:scale-100 transition duration-700" 
+                    onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"; }}
+                />
                 <div className="absolute inset-0 border border-black/10 rounded-2xl m-4 pointer-events-none"></div>
               </div>
             </div>
-            <div className="md:w-2/3 space-y-8">
+            <div className="md:w-2/3 space-y-8 text-start">
               <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-70">{t.about.p1}</p>
               <p className="font-sans text-xl md:text-2xl leading-relaxed opacity-90 font-medium italic border-s-4 border-slate-300 dark:border-slate-700 ps-6">{t.about.p2}</p>
               <div className="pt-8">
@@ -337,10 +349,10 @@ const App = () => {
                 </a>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12">
-                {Object.entries(t.about.hobbies).map(([key, value]) => (
-                  <div key={key} className={`flex flex-col items-center gap-4 p-6 rounded-2xl border ${isDark ? 'bg-slate-800/50 border-slate-700' : 'bg-[#FDFBF9] border-slate-100'} text-center hover:-translate-y-1 transition duration-300`}>
-                    {key === 'mtb' ? <Mountain size={24} className="opacity-50" /> : key === 'surf' ? <Waves size={24} className="opacity-50" /> : key === 'snowboard' ? <Mountain size={24} className="opacity-50" /> : <Map size={24} className="opacity-50" />}
-                    <span className="font-sans text-sm font-bold tracking-wider opacity-60 uppercase">{value}</span>
+                {t.about.hobbies.map((hobby) => (
+                  <div key={hobby.id} className={`flex flex-col items-center gap-4 p-6 rounded-2xl border ${isDark ? 'bg-slate-800/50 border-slate-700' : 'bg-[#FDFBF9] border-slate-100'} text-center hover:-translate-y-1 transition duration-300`}>
+                    <hobby.Icon size={24} className="opacity-50" />
+                    <span className="font-sans text-sm font-bold tracking-wider opacity-60 uppercase">{hobby.name}</span>
                   </div>
                 ))}
               </div>
@@ -358,7 +370,7 @@ const App = () => {
         <div className="flex flex-col border-t border-slate-200 dark:border-slate-800">
           {t.work.projects.map((project, index) => (
             <div key={project.id} className="group border-b border-slate-200 dark:border-slate-800 transition-all duration-500 cursor-default hover:bg-slate-500/5" onMouseEnter={() => setActiveProject(index)} onMouseLeave={() => setActiveProject(null)}>
-              <div className="py-12 flex flex-col md:flex-row justify-between md:items-center gap-8 px-6">
+              <div className="py-12 flex flex-col md:flex-row justify-between md:items-center gap-8 px-6 text-start">
                 <div className="flex items-center gap-8 md:w-1/3">
                   <span className="font-handwriting text-5xl opacity-10 w-12 group-hover:opacity-40 transition-opacity duration-500">0{index+1}</span>
                   <div>
@@ -367,7 +379,7 @@ const App = () => {
                   </div>
                 </div>
                 <div className="md:w-1/2">
-                  <p className="font-sans text-lg opacity-70 group-hover:opacity-100 transition duration-500 leading-relaxed">{project.description}</p>
+                  <p className="font-sans text-lg opacity-60 group-hover:opacity-100 transition duration-500 leading-relaxed">{project.description}</p>
                 </div>
                 <div className="hidden md:flex items-center justify-end w-12">
                   <ArrowUpRight className={`opacity-20 transition-all duration-500 ${activeProject === index ? 'opacity-100' : ''} ${isRTL ? 'group-hover:-rotate-45' : 'group-hover:rotate-45'}`} size={32} strokeWidth={1} />
@@ -375,7 +387,7 @@ const App = () => {
               </div>
               <div className={`grid transition-all duration-500 ease-in-out ${activeProject === index ? 'grid-rows-[1fr] opacity-100 mb-12 px-6' : 'grid-rows-[0fr] opacity-0 px-6'}`}>
                 <div className="overflow-hidden">
-                  <div className="pt-10 border-t border-dashed border-slate-200 dark:border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-16">
+                  <div className="pt-10 border-t border-dashed border-slate-200 dark:border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-16 text-start">
                     <div className="space-y-12">
                        <div>
                          <h4 className="font-sans font-bold text-[10px] uppercase tracking-[0.3em] opacity-30 mb-4 flex items-center gap-2"><Layout size={14} /> {t.work.labels.challenge}</h4>
@@ -416,15 +428,17 @@ const App = () => {
       <section id="builder" className={`py-32 ${isDark ? 'bg-slate-900/40' : 'bg-[#F9F9F9]'} border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} px-6 md:px-12`}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="font-handwriting text-6xl md:text-7xl mb-6">AI & Side Projects</h2>
+            <h2 className="font-handwriting text-6xl md:text-7xl mb-6">{t.builder.title}</h2>
             <div className="w-16 h-[2px] bg-slate-300 dark:bg-slate-700 mx-auto mb-8"></div>
             <p className="font-sans text-xl opacity-60 max-w-2xl mx-auto leading-relaxed font-light">{t.builder.subtitle}</p>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col text-start">
             {t.builder.projects.map((proj, idx) => (
               <div key={idx} className={`group flex flex-col md:flex-row md:items-center gap-6 md:gap-12 py-10 border-b ${isDark ? 'border-slate-800' : 'border-slate-200'} last:border-0 hover:bg-slate-500/5 transition-all duration-500 px-8 -mx-8 rounded-3xl`}>
                 <div className="flex items-center gap-8 md:w-1/3">
-                  <div className={`w-14 h-14 ${isDark ? 'bg-slate-800' : 'bg-white'} rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-500`}>{proj.icon}</div>
+                  <div className={`w-14 h-14 ${isDark ? 'bg-slate-800' : 'bg-white'} rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-500`}>
+                    <proj.Icon size={22} />
+                  </div>
                   <h3 className="font-sans text-2xl font-bold tracking-tight">{proj.title}</h3>
                 </div>
                 <div className="md:w-2/3 flex items-center justify-between gap-8">
@@ -444,7 +458,7 @@ const App = () => {
         <h2 className="font-handwriting text-6xl md:text-7xl mb-24 text-center tracking-wide">{t.experience.title}</h2>
         <div className={`relative border-s-2 ${isDark ? 'border-slate-800' : 'border-slate-200'} space-y-20 py-4 ms-6 md:ms-12`}>
           {t.experience.jobs.map((job, idx) => (
-            <div key={idx} className="relative ps-12 group">
+            <div key={idx} className="relative ps-12 group text-start">
               <div className={`absolute -start-[11px] top-2 w-5 h-5 ${isDark ? 'bg-slate-950 border-slate-700' : 'bg-white border-slate-300'} border-2 rounded-full group-hover:bg-slate-500 group-hover:border-slate-500 transition duration-500 shadow-xl`}></div>
               <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-4">
                 <h3 className="font-sans text-3xl font-bold tracking-tight">{job.company} <span className="opacity-20 font-light mx-4">/</span> <span className="text-xl opacity-50 font-medium">{job.role}</span></h3>
@@ -459,7 +473,7 @@ const App = () => {
       {/* Methodology Section */}
       <section id="methodology" className={`py-32 ${isDark ? 'bg-slate-900/30' : 'bg-[#F9F9F9]'} border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} overflow-hidden`}>
         <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <h2 className="font-handwriting text-6xl md:text-7xl mb-32 text-center">Playbook</h2>
+          <h2 className="font-handwriting text-6xl md:text-7xl mb-32 text-center">{t.methodology.title}</h2>
           <div className="relative max-w-5xl mx-auto">
             <div className={`absolute top-0 bottom-0 start-8 md:start-1/2 w-[1px] ${isDark ? 'bg-slate-800' : 'bg-slate-300'} md:-translate-x-1/2 rtl:md:translate-x-1/2`}></div>
             {t.methodology.steps.map((step, idx) => {
@@ -469,11 +483,11 @@ const App = () => {
                   <div className={`absolute top-0 md:top-1/2 md:-translate-y-1/2 start-8 md:start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-16 h-16 ${isDark ? 'bg-slate-950 border-slate-800 text-white' : 'bg-[#F9F9F9] border-slate-200 text-slate-400'} border-2 rounded-full flex items-center justify-center z-10 group-hover:bg-slate-900 group-hover:text-white transition-all duration-700 shadow-2xl`}>
                     <span className="font-handwriting text-4xl italic opacity-50 group-hover:opacity-100">0{idx + 1}</span>
                   </div>
-                  <div className="md:hidden w-full ps-24 pt-2">
+                  <div className="md:hidden w-full ps-24 pt-2 text-start">
                     <div className={`${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'} p-8 rounded-3xl border shadow-xl`}><h3 className="font-sans text-2xl font-bold mb-3">{step.title}</h3><p className="font-sans opacity-70 leading-relaxed">{step.desc}</p></div>
                   </div>
-                  <div className={`hidden md:flex w-full ${isEven ? 'justify-start' : 'justify-end'}`}>
-                    <div className={`w-[44%] ${isEven ? 'text-start' : 'text-end'}`}>
+                  <div className={`hidden md:flex w-full ${isEven ? 'justify-start text-start' : 'justify-end text-end'}`}>
+                    <div className={`w-[44%]`}>
                       <div className={`relative ${isDark ? 'bg-slate-900/50 border-slate-800' : 'bg-white border-slate-100'} p-12 rounded-[2.5rem] border shadow-2xl group-hover:-translate-y-2 transition-all duration-500`}>
                         <div className={`absolute top-1/2 -translate-y-1/2 w-16 h-[1px] ${isDark ? 'bg-slate-800' : 'bg-slate-300'} group-hover:bg-slate-900 transition-colors ${isEven ? '-end-16' : '-start-16'}`}></div>
                         <h3 className="font-sans text-2xl font-bold mb-4 tracking-tight">{step.title}</h3>
@@ -489,14 +503,11 @@ const App = () => {
       </section>
 
       {/* Footer & Contact Form */}
-      <footer className={`py-40 px-6 md:px-12 ${isDark ? 'bg-slate-950 border-slate-800' : 'bg-white border-slate-200'} border-t text-center overflow-hidden relative`}>
+      <footer id="contact" className={`py-40 px-6 md:px-12 ${isDark ? 'bg-slate-950 border-slate-800' : 'bg-white border-slate-200'} border-t text-center overflow-hidden relative`}>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-[0.03] pointer-events-none font-handwriting text-[25vw] whitespace-nowrap -z-10 select-none">LEVI YANIV LEVI YANIV</div>
-        
         <div className="max-w-4xl mx-auto flex flex-col items-center">
           <h2 className="font-handwriting text-8xl md:text-[10rem] mb-10 leading-none tracking-tighter hover:scale-105 transition duration-700 cursor-default">{t.footer.talk}</h2>
           <p className="font-sans text-2xl md:text-3xl opacity-60 leading-relaxed max-w-3xl mb-16 font-light tracking-tight">{t.footer.desc}</p>
-          
-          {/* Contact Form Section */}
           <div className="w-full max-w-xl mb-24">
             {isSubmitted ? (
               <div className="flex flex-col items-center gap-4 py-12 animate-in fade-in zoom-in duration-500">
@@ -506,42 +517,22 @@ const App = () => {
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div className={`relative rounded-xl border transition-all duration-300 ${isDark ? 'bg-slate-900 border-slate-800 focus-within:border-white' : 'bg-white border-slate-200 focus-within:border-slate-900'}`}>
-                  <input 
-                    type="email" 
-                    required
-                    placeholder={t.footer.emailPlaceholder}
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    className="w-full p-5 bg-transparent outline-none font-sans text-lg text-center"
-                  />
+                  <input type="email" required placeholder={t.footer.emailPlaceholder} value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full p-5 bg-transparent outline-none font-sans text-lg text-center" />
                 </div>
                 <div className={`relative rounded-xl border transition-all duration-300 ${isDark ? 'bg-slate-900 border-slate-800 focus-within:border-white' : 'bg-white border-slate-200 focus-within:border-slate-900'}`}>
-                  <textarea 
-                    required
-                    rows="4"
-                    placeholder={t.footer.messagePlaceholder}
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full p-5 bg-transparent outline-none font-sans text-lg text-center resize-none"
-                  />
+                  <textarea required rows="4" placeholder={t.footer.messagePlaceholder} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full p-5 bg-transparent outline-none font-sans text-lg text-center resize-none" />
                 </div>
-                <button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className={`w-full py-5 rounded-xl font-sans font-bold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-3 ${isDark ? 'bg-white text-slate-950 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-700'} ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
-                >
+                <button type="submit" disabled={isSubmitting} className={`w-full py-5 rounded-xl font-sans font-bold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-3 ${isDark ? 'bg-white text-slate-950 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-700'} ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
                   {isSubmitting ? '...' : <><Send size={18} /> {t.footer.sendBtn}</>}
                 </button>
               </form>
             )}
           </div>
-
           <div className="flex justify-center items-center gap-12">
-            <a href="tel:+972508623138" className={`p-7 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-500 shadow-2xl hover:-translate-y-2`} title="Phone"><Phone size={32} strokeWidth={1} /></a>
-            <a href="mailto:yanivle1@gmail.com" className={`p-7 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-500 shadow-2xl hover:-translate-y-2`} title="Email"><Mail size={32} strokeWidth={1} /></a>
-            <a href="https://www.linkedin.com/in/yaniv--levi/" target="_blank" rel="noreferrer" className={`p-7 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-500 shadow-2xl hover:-translate-y-2`} title="LinkedIn"><Linkedin size={32} strokeWidth={1} /></a>
+            <a href="tel:+972508623138" className={`p-7 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-500 shadow-2xl hover:-translate-y-2`} title="PHONE"><Phone size={32} strokeWidth={1} /></a>
+            <a href="mailto:yanivle1@gmail.com" className={`p-7 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-500 shadow-2xl hover:-translate-y-2`} title="EMAIL"><Mail size={32} strokeWidth={1} /></a>
+            <a href="https://www.linkedin.com/in/yaniv--levi/" target="_blank" rel="noreferrer" className={`p-7 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-500 shadow-2xl hover:-translate-y-2`} title="LINKEDIN"><Linkedin size={32} strokeWidth={1} /></a>
           </div>
-          
           <p className="font-sans opacity-20 text-[10px] font-black tracking-[0.5em] pt-40 uppercase">{t.footer.rights}</p>
         </div>
       </footer>
