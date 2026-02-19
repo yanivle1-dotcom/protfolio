@@ -1,13 +1,29 @@
+@import "tailwindcss";
+
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Assistant:wght@200;300;400;500;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@theme {
+  --font-handwriting: "Amatic SC", cursive;
+  --font-sans: "Assistant", sans-serif;
+}
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  overflow-x: hidden;
+  @apply antialiased overflow-x-hidden font-sans;
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting) !important;
+}
+
+.font-sans {
+  font-family: var(--font-sans) !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

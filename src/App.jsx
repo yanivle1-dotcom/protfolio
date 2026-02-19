@@ -54,8 +54,8 @@ const CONTENT_DATA = {
           role: "Senior Product Manager",
           description: "הובלת אסטרטגיית מוצר AI-Native בתחום ה-EdTech.",
           challenge: "בעיית Retention אצל סטודנטים לסייבר וקושי של בוגרים להציג ניסיון מעשי למעסיקים.",
-          solution: "השקת 'Weekly Goals' ליצירת הרגלי למידה וכלי 'Career AI' ליצירת קורות חיים.",
-          impact: "עלייה משמעותית ב-Retention וערך תעסוקתי מיידי לבוגרים.",
+          solution: "השקת 'Weekly Goals' ליצירת הרגלי למידה וכלי 'Career AI' ליצירת קורות חיים ופרופילי לינקדאין מבוססי דאטה.",
+          impact: "עלייה משמעותית ב-Retention וערך תעסוקתי מיידי לבוגרים דרך אוטומציה של ה-Value Chain.",
           artifacts: ["Kickoff Deck", "AI Specs", "User Flows"]
         },
         {
@@ -64,18 +64,40 @@ const CONTENT_DATA = {
           role: "Lead Product Manager",
           description: "סקילינג של פלטפורמת White-Label ל-200 חברות תעופה.",
           challenge: "תהליכי Onboarding איטיים ו-Booking Flow עם אחוזי נטישה גבוהים.",
-          solution: "ארכיטקטורה של פלטפורמת White-Label גמישה ואופטימיזציה של משפך המכירה.",
-          impact: "עלייה של 20% בהמרות וקיצור ה-Time-to-Market.",
+          solution: "ארכיטקטורה של פלטפורמת White-Label גמישה ואופטימיזציה אגרסיבית של משפך המכירה.",
+          impact: "עלייה של 20% בהמרות וקיצור ה-Time-to-Market עבור לקוחות B2B חדשים.",
           artifacts: ["White-Label Strategy", "A/B Testing"]
+        },
+        {
+          id: "03",
+          company: "Matrix / EL AL",
+          role: "Senior Product Manager",
+          description: "טרנספורמציה דיגיטלית מלאה של אל-על בתקופת הקורונה.",
+          challenge: "קריסת מערכות שירות הלקוחות והיעדר כלי Self-Service בזמן משבר עולמי.",
+          solution: "השקת אקו-סיסטם דיגיטלי חדש (אתר, אפליקציה, פורטלים) ואפיון מחדש של מערך ה'צור קשר' החכם.",
+          impact: "עלייה של 25% במכירות ישירות והורדת עומס דרמטית ממוקדי השירות הטלפוניים.",
+          artifacts: ["Detailed PRDs", "Architecture Docs", "Wireframes"]
+        },
+        {
+          id: "04",
+          company: "Migdal Insurance",
+          role: "Product Manager",
+          description: "בניית מערכת One-Stop-Shop ל-50,000 סוכני ביטוח.",
+          challenge: "סוכנים שעבדו על ריבוי מערכות Legacy מיושנות, מה שיצר איטיות וטעויות.",
+          solution: "אפיון והשקה של 'שולחן עבודה לסוכן' - פלטפורמה אחודה המפשטת תהליכי רגולציה וחיתום.",
+          impact: "אימוץ מלא של 50,000 סוכנים תוך רבעון אחד ושיפור דרמטי ביעילות התפעולית.",
+          artifacts: ["Adoption Strategy", "Regulatory Workflows"]
         }
       ]
     },
     experience: {
       title: "מסלול קריירה",
       jobs: [
-        { company: "IronCircle", role: "Senior Product Manager", period: "2025 — היום", desc: "אסטרטגיית AI-Native ומנועי Retention." },
-        { company: "GO7", role: "Lead Product Manager", period: "2023 — 2025", desc: "סקילינג PSS ו-White-Label גלובלי." },
-        { company: "Matrix / EL AL", role: "Senior Product Manager", period: "2020 — 2023", desc: "טרנספורמציה דיגיטלית ב-Scale." }
+        { company: "IronCircle", role: "Senior Product Manager", period: "2025 — היום", desc: "הובלת אסטרטגיית AI-Native ומנועי Retention." },
+        { company: "GO7", role: "Lead Product Manager", period: "2023 — 2025", desc: "סקילינג של פלטפורמת PSS ו-White-Label ללקוחות גלובליים." },
+        { company: "Matrix / EL AL", role: "Senior Product Manager", period: "2020 — 2023", desc: "טרנספורמציה דיגיטלית ב-Scale." },
+        { company: "Migdal Insurance", role: "Product Manager", period: "2017 — 2020", desc: "מערכות B2B מורכבות ורגולציה." },
+        { company: "Visonic Group", role: "Project Manager", period: "2010 — 2017", desc: "ניהול פרויקטי R&D חומרה ותוכנה." }
       ]
     },
     methodology: {
@@ -145,8 +167,8 @@ const CONTENT_DATA = {
           role: "Senior Product Manager",
           description: "Leading AI-Native product strategy in EdTech.",
           challenge: "Cybersecurity students dropping out and graduates struggling to showcase expertise.",
-          solution: "Designed 'Weekly Goals' and 'Career AI' tools using GenAI.",
-          impact: "Massive increase in retention and employability value.",
+          solution: "Designed 'Weekly Goals' and 'Career AI' tools to generate data-driven CVs and LinkedIn profiles using GenAI.",
+          impact: "Massive increase in retention and immediate employability value for graduates.",
           artifacts: ["Kickoff Deck", "AI Specs", "User Flows"]
         },
         {
@@ -154,19 +176,41 @@ const CONTENT_DATA = {
           company: "GO7",
           role: "Lead Product Manager",
           description: "Scaling a B2B2C PSS platform serving 200 airlines.",
-          challenge: "Slow B2B onboarding and high drop-off rates in booking flow.",
-          solution: "Architected a White-Label platform and optimized the funnel.",
-          impact: "Achieved a 20% increase in conversion rates.",
+          challenge: "Slow B2B onboarding and high drop-off rates in the booking flow.",
+          solution: "Architected a flexible White-Label platform and aggressively optimized the funnel.",
+          impact: "Achieved a 20% increase in conversion rates and drastically shortened Time-to-Market.",
           artifacts: ["White-Label Strategy", "A/B Testing"]
+        },
+        {
+          id: "03",
+          company: "Matrix / EL AL",
+          role: "Senior Product Manager",
+          description: "Leading enterprise digital transformation during COVID-19.",
+          challenge: "Legacy platforms collapsing under load and a lack of digital self-service for passengers.",
+          solution: "Launched a new digital ecosystem and redesigned the smart 'Contact Us' funnel with deep CRM integration.",
+          impact: "Drove a 25% increase in direct sales and reduced call center load via smart automation.",
+          artifacts: ["Detailed PRDs", "Architecture Migration", "Wireframes"]
+        },
+        {
+          id: "04",
+          company: "Migdal Insurance",
+          role: "Product Manager",
+          description: "Building a B2B One-Stop-Shop for 50,000 agents.",
+          challenge: "Agents navigating fragmented legacy systems, causing slow processing and regulatory friction.",
+          solution: "Designed and launched the 'Agent Desktop' to centralize workflows and simplify regulatory underwriting.",
+          impact: "Full adoption by 50,000+ agents in one quarter and significant operational efficiency gains.",
+          artifacts: ["Adoption Strategy", "Regulatory Workflows"]
         }
       ]
     },
     experience: {
       title: "Career Timeline",
       jobs: [
-        { company: "IronCircle", role: "Senior Product Manager", period: "2025 — Present", desc: "AI-Native strategy and retention engines." },
+        { company: "IronCircle", role: "Senior Product Manager", period: "2025 — Present", desc: "Leading AI-Native strategy and retention engines." },
         { company: "GO7", role: "Lead Product Manager", period: "2023 — 2025", desc: "Global PSS scale and White-Label platform." },
-        { company: "Matrix / EL AL", role: "Senior Product Manager", period: "2020 — 2023", desc: "Enterprise-wide digital transformation." }
+        { company: "Matrix / EL AL", role: "Senior Product Manager", period: "2020 — 2023", desc: "Enterprise-wide digital transformation." },
+        { company: "Migdal Insurance", role: "Product Manager", period: "2017 — 2020", desc: "Complex B2B platforms and Insurtech." },
+        { company: "Visonic Group", role: "Project Manager", period: "2010 — 2017", desc: "End-to-end hardware & software R&D." }
       ]
     },
     methodology: {
