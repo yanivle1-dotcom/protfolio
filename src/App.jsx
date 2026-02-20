@@ -360,7 +360,8 @@ const App = () => {
               <p className="font-assistant text-xl md:text-2xl font-light leading-relaxed opacity-80">{t.about.p1}</p>
               <p className="font-assistant text-xl md:text-2xl leading-relaxed opacity-90 font-medium italic border-s-4 border-slate-300 dark:border-slate-700 ps-6">{t.about.p2}</p>
               <div className="pt-8">
-                <a href="/YANIV_LEVI_-_Senior_Product_Manager.PDF" download className={`inline-flex items-center gap-3 px-8 py-4 ${isDark ? 'bg-white text-slate-950 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-700'} rounded-lg font-assistant font-semibold tracking-widest uppercase text-sm transition shadow-xl`}>
+                {/* Updated CV link to match lowercase simplified filename */}
+                <a href="/yaniv_cv.pdf" download="Yaniv_Levi_CV.pdf" className={`inline-flex items-center gap-3 px-8 py-4 ${isDark ? 'bg-white text-slate-950 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-700'} rounded-lg font-assistant font-semibold tracking-widest uppercase text-sm transition shadow-xl`}>
                   <Download size={16} /> {t.about.resumeBtn}
                 </a>
               </div>
