@@ -34,14 +34,32 @@ const CONTENT_DATA = {
     },
     builder: {
       title: "AI & Side Projects",
-      subtitle: "אני לא רק מאפיין, אני בונה. אלו חלק מהכלים והמערכות שיזמתי ופיתחתי בעצמי באמצעות קוד וכלי AI.",
+      subtitle: "אני לא רק מאפיין מוצרים — אני גם בונה אותם. ארבעה פרויקטים שבניתי מקצה לקצה באמצעות קוד, כלי AI ואוטומציות.",
       projects: [
-        { title: "TaxFree Solutions", desc: "מערכת אוטומטית המפשטת ומייעלת את תהליך ההגשה של בקשות להחזרי מס.", Icon: FileText },
-        { title: "Smart Investment Tracker", desc: "סקרייפר ומערכת ניתוח סנטימנט פיננסי מפורומים לטובת החלטות השקעה.", Icon: LineChart },
-        { title: "AI Children's Books", desc: "פלטפורמה ליצירת ספרי ילדים מותאמים אישית המשלבת LLMs ו-Image Generation.", Icon: BookOpen },
-        { title: "E-Commerce Automations", desc: "אוטומציות חכמות לניהול שרשרת אספקה ומלאי בעולמות הדרופשיפינג.", Icon: ShoppingCart },
-        { title: "Instagram Bot", desc: "כלי מבוסס קוד לניהול מעורבות ואוטומציה של אינטראקציות באינסטגרם.", Icon: Bot },
-        { title: "Home IoT Hub", desc: "פיתוח פתרונות IoT מותאמים אישית לשליטה ואוטומציה של מערכות בבית.", Icon: Home }
+        { 
+          title: "TaxFree Solutions", 
+          subtitle: "מערכת אוטומטית המפשטת ומייעלת את תהליך ההגשה של בקשות להחזרי מס.",
+          desc: "בניית פלטפורמה end-to-end שמרכזת מידע פיננסי, מבצעת ולידציה אוטומטית למסמכים, ומנחה את המשתמש בתהליך צעד-אחר-צעד עד להגשה. המערכת משלבת ממשקים ל-APIs ממשלתיים, ביצוע OCR והטמעה של המידע לתוך טופס ממשלתי, טריגרים אוטומטיים לעדכון סטטוס, ושכבת ממשק משתמש אינטואיטיבית שמקטינה את כמות הטעויות. מבחינתי זה היה תרגיל בפרודוקטיזציה של תהליך רגולטורי מורכב למוצר פשוט ומדיד.", 
+          icon: <FileText size={22} /> 
+        },
+        { 
+          title: "Smart Investment Tracker", 
+          subtitle: "סקרייפר ומערכת ניתוח סנטימנט פיננסי מפורומים ורשתות לטובת החלטות השקעה.",
+          desc: "הקמתי Pipeline שמסנן דיונים מפורומים ואתרים נבחרים, מנקה את הדאטה ומנתח סנטימנט באמצעות מודלי שפה ו-LLMs. המערכת מאגדת את המידע ללוח דשבורד אחד, שמציג מגמות, buzz סביב מניות ספציפיות ותובנות פעולה פרקטיות למשקיע. המטרה הייתה לחבר בין תחושות שוק לאינדיקטורים מדידים, ולהדגים איך AI יכול לשפר תהליכי קבלת החלטות פיננסיות.", 
+          icon: <LineChart size={22} /> 
+        },
+        { 
+          title: "E-Commerce Automations", 
+          subtitle: "אוטומציות חכמות לניהול מלאי, הזמנות ושרשרת אספקה בעולמות ה-eCommerce והדרופשיפינג.",
+          desc: "בניית מערך אוטומציות שמתחבר לפלטפורמות מסחר, ספקים ושירותי שילוח, ומנהל את ה-Back Office כמעט ללא מגע יד אדם. המערכת מעדכנת מלאי, מסנכרנת מחירים, פותחת הזמנות, ומייצרת התראות חכמות כשיש חריגות או צווארי בקבוק. הפוקוס שלי פה היה על אמינות התהליכים, הקטנת טעויות ידניות ושיפור הרווחיות דרך אופטימיזציה של ה-operations.", 
+          icon: <ShoppingCart size={22} /> 
+        },
+        { 
+          title: "Home IoT Hub", 
+          subtitle: "מרכז שליטה חכם לבית, המאגד מכשירי IoT שונים לממשק אחד ואוטומציות חכמות.",
+          desc: "יצרתי Hub שמתחבר למגוון מכשירי IoT (תאורה, אקלים, אבטחה ועוד) ומאפשר להגדיר סצנריוים ואוטומציות לפי זמן, מיקום והתנהגות. הממשק מאפשר שליטה מכל מקום, ניטור סטטוסים בזמן אמת ויצירת טריגרים מותאמים אישית ללא צורך בידע טכני. הפרויקט הדגים עבורי איך מחברים בין חומרה, תוכנה ו-UX לכדי חוויית משתמש קוהרנטית ואינטואיטיבית.", 
+          icon: <Home size={22} /> 
+        }
       ]
     },
     work: {
@@ -147,14 +165,32 @@ const CONTENT_DATA = {
     },
     builder: {
       title: "AI & Side Projects",
-      subtitle: "I don't just write specs, I build. These are some of the tools and systems I've developed using Code and AI.",
+      subtitle: "I don't just design products—I build them. Four end-to-end projects I developed using code, AI tools, and automations.",
       projects: [
-        { title: "Tax Refund Automation", desc: "Automated system streamlining the tax refund submission process.", Icon: FileText },
-        { title: "Smart Investment Tracker", desc: "Custom scraper and analytics tool for data-driven investment insights.", Icon: LineChart },
-        { title: "AI Children's Books", desc: "Platform for personalized books combining LLMs and AI illustration.", Icon: BookOpen },
-        { title: "E-Commerce Automations", desc: "Smart workflows for supply chain and inventory management.", Icon: ShoppingCart },
-        { title: "Instagram Bot", desc: "Code-based tool for managing organic engagement and automation.", Icon: Bot },
-        { title: "Home IoT Hub", desc: "Custom IoT solutions for automated home management and control.", Icon: Home }
+        { 
+          title: "Tax Refund Automation", 
+          subtitle: "An automated system simplifying and streamlining the tax refund request process.",
+          desc: "Built an end-to-end platform that centralizes financial data, auto-validates documents, and guides users step-by-step. The system integrates with government APIs, performs OCR for form population, utilizes automated status triggers, and features an intuitive UI to minimize errors. For me, this was an exercise in productizing a complex regulatory process into a simple, measurable product.", 
+          icon: <FileText size={22} /> 
+        },
+        { 
+          title: "Smart Investment Tracker", 
+          subtitle: "A scraper and financial sentiment analysis system for forums and networks to aid investment decisions.",
+          desc: "Created a data pipeline that filters discussions from select forums, cleans the data, and analyzes sentiment using LLMs. The system aggregates this into a single dashboard displaying trends, stock-specific buzz, and actionable insights. The goal was to connect market sentiment with measurable indicators, showcasing how AI can enhance financial decision-making.", 
+          icon: <LineChart size={22} /> 
+        },
+        { 
+          title: "E-Commerce Automations", 
+          subtitle: "Smart automations for inventory, orders, and supply chain management in eCommerce and dropshipping.",
+          desc: "Built an automation suite connecting trading platforms, suppliers, and shipping services, managing the back-office with near-zero human touch. It updates inventory, syncs pricing, opens orders, and generates smart alerts for anomalies. My focus here was on process reliability, reducing manual errors, and improving profitability through operations optimization.", 
+          icon: <ShoppingCart size={22} /> 
+        },
+        { 
+          title: "Home IoT Hub", 
+          subtitle: "A smart home control center consolidating various IoT devices into one interface with smart automations.",
+          desc: "Developed a Hub connecting to various IoT devices (lighting, climate, security) allowing for scenarios and automations based on time, location, and behavior. The interface enables remote control, real-time status monitoring, and custom triggers without technical knowledge. This project demonstrated how to bridge hardware, software, and UX into a coherent, intuitive user experience.", 
+          icon: <Home size={22} /> 
+        }
       ]
     },
     work: {
@@ -360,7 +396,6 @@ const App = () => {
               <p className="font-assistant text-xl md:text-2xl font-light leading-relaxed opacity-80">{t.about.p1}</p>
               <p className="font-assistant text-xl md:text-2xl leading-relaxed opacity-90 font-medium italic border-s-4 border-slate-300 dark:border-slate-700 ps-6">{t.about.p2}</p>
               <div className="pt-8">
-                {/* Updated CV link to match lowercase simplified filename */}
                 <a href="/yaniv_cv.pdf" download="Yaniv_Levi_CV.pdf" className={`inline-flex items-center gap-3 px-8 py-4 ${isDark ? 'bg-white text-slate-950 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-700'} rounded-lg font-assistant font-semibold tracking-widest uppercase text-sm transition shadow-xl`}>
                   <Download size={16} /> {t.about.resumeBtn}
                 </a>
@@ -441,9 +476,9 @@ const App = () => {
         </div>
       </section>
 
-      {/* Builder Section */}
+      {/* Builder Section (Updated with detailed AI projects) */}
       <section id="builder" className={`py-32 ${isDark ? 'bg-slate-900/40' : 'bg-[#F9F9F9]'} border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} px-6 md:px-12`}>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="font-amatic text-6xl md:text-7xl font-bold mb-6">{t.builder.title}</h2>
             <div className="w-16 h-[2px] bg-slate-300 dark:bg-slate-700 mx-auto mb-8"></div>
@@ -451,16 +486,19 @@ const App = () => {
           </div>
           <div className="flex flex-col text-start">
             {t.builder.projects.map((proj, idx) => (
-              <div key={idx} className={`group flex flex-col md:flex-row md:items-center gap-6 md:gap-12 py-10 border-b ${isDark ? 'border-slate-800' : 'border-slate-200'} last:border-0 hover:bg-slate-500/5 transition-all duration-500 px-8 -mx-8 rounded-3xl`}>
-                <div className="flex items-center gap-8 md:w-1/3">
-                  <div className={`w-14 h-14 ${isDark ? 'bg-slate-800' : 'bg-white'} rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition duration-500`}>
-                    <proj.Icon size={22} className="opacity-70" />
+              <div key={idx} className={`group flex flex-col md:flex-row md:items-start gap-6 md:gap-12 py-12 border-b ${isDark ? 'border-slate-800' : 'border-slate-200'} last:border-0 hover:bg-slate-500/5 transition-all duration-500 px-8 -mx-8 rounded-3xl`}>
+                <div className="flex items-start gap-6 md:w-1/3 pt-2">
+                  <div className={`w-14 h-14 ${isDark ? 'bg-slate-800' : 'bg-white'} rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition duration-500 shrink-0`}>
+                    {proj.icon}
                   </div>
-                  <h3 className="font-assistant text-2xl font-bold tracking-tight">{proj.title}</h3>
+                  <h3 className="font-assistant text-2xl font-bold tracking-tight mt-3">{proj.title}</h3>
                 </div>
-                <div className="md:w-2/3 flex items-center justify-between gap-8">
-                   <p className="font-assistant text-lg font-light opacity-70 group-hover:opacity-100 transition duration-500 leading-relaxed">{proj.desc}</p>
-                   <a href="https://github.com/yanivle1-dotcom?tab=repositories" target="_blank" rel="noreferrer" className="opacity-30 hover:opacity-100 hover:scale-110 transition-all shrink-0">
+                <div className="md:w-2/3 flex flex-col md:flex-row items-start justify-between gap-8">
+                   <div className="space-y-4">
+                     <p className="font-assistant text-xl font-bold opacity-90 leading-relaxed text-slate-800 dark:text-slate-200">{proj.subtitle}</p>
+                     <p className="font-assistant text-lg font-light opacity-80 group-hover:opacity-100 transition duration-500 leading-relaxed text-slate-600 dark:text-slate-400">{proj.desc}</p>
+                   </div>
+                   <a href="https://github.com/yanivle1-dotcom?tab=repositories" target="_blank" rel="noreferrer" className="opacity-30 hover:opacity-100 hover:scale-110 transition-all shrink-0 mt-2">
                      <Github size={28} strokeWidth={1.5} />
                    </a>
                 </div>
