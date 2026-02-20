@@ -103,10 +103,10 @@ const CONTENT_DATA = {
     methodology: {
       title: "Playbook",
       steps: [
-        { title: "Discovery", desc: "הבנת ה'למה', חקר משתמשים ותיעדוף אכזרי מבוסס ROI." },
-        { title: "Architecture", desc: "ויזואליזציה של מסע המשתמש ובדיקת היתכנות טכנית." },
-        { title: "Alignment", desc: "אפיון מדויק ויישור קו מול ה-Stakeholders לפני הפיתוח." },
-        { title: "Growth", desc: "השקה מדורגת, מדידה מתמדת ואיטרציות מהירות." }
+        { title: "Discovery & Strategy", desc: "חקר שוק, הבנת משתמשים והגדרת ה'למה'. אני מתמקד בזיהוי הבעיות האמיתיות ותיעדוף אכזרי מבוסס ROI וערך עסקי, לפני שכותבים שורת קוד אחת." },
+        { title: "Architecture & UX", desc: "בניית פתרונות אינטואיטיביים. ויזואליזציה של מסע המשתמש (User Journey), יצירת Wireframes, ובדיקת היתכנות טכנית צמודה מול צוותי הפיתוח." },
+        { title: "PRD & Alignment", desc: "תרגום החזון לתוכנית עבודה פרקטית. כתיבת אפיון מדויק (PRD), הגדרת KPIs למדידת הצלחה, ויישור קו (Alignment) מלא מול כלל ה-Stakeholders." },
+        { title: "Delivery & Growth", desc: "ביצוע ללא פשרות. ניהול ספרינטים, השקה מדורגת (Phased Rollout), מדידת נתונים מתמדת וביצוע איטרציות מהירות מבוססות דאטה ופידבק." }
       ]
     },
     footer: {
@@ -216,10 +216,10 @@ const CONTENT_DATA = {
     methodology: {
       title: "My Framework",
       steps: [
-        { title: "Discovery", desc: "Identify the 'Why', user research, and ruthless ROI-based prioritization." },
-        { title: "Architecture", desc: "Visualizing journeys, technical feasibility checks, and wireframes." },
-        { title: "Alignment", desc: "Clear specifications and stakeholder alignment before dev starts." },
-        { title: "Growth", desc: "Phased releases, measurement, and rapid iterations." }
+        { title: "Discovery & Strategy", desc: "Market research, user interviews, and identifying the 'Why'. Focusing on solving the right problems with ruthless ROI-based prioritization before writing a single line of code." },
+        { title: "Architecture & UX", desc: "Crafting intuitive solutions. Mapping out user journeys, creating actionable wireframes, and validating technical feasibility closely with R&D teams." },
+        { title: "PRD & Alignment", desc: "Translating vision into execution. Writing comprehensive PRDs, defining clear KPIs, and ensuring absolute alignment across all stakeholders." },
+        { title: "Delivery & Growth", desc: "Flawless execution. Managing sprints, leading phased rollouts, continuous measurement via A/B testing, and rapid data-driven iterations." }
       ]
     },
     footer: {
