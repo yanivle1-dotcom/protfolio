@@ -337,20 +337,20 @@ const App = () => {
         <div className="flex items-center gap-6 md:gap-10">
           <div className="hidden lg:flex gap-8">
             {Object.keys(t.nav).map(key => (
-              <a key={key} href={`#${key}`} className="font-assistant text-sm font-semibold opacity-60 hover:opacity-100 transition uppercase tracking-[0.2em]">{t.nav[key]}</a>
+              <a key={key} href={`#${key}`} className={`font-assistant text-sm font-semibold transition uppercase tracking-[0.2em] ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`}>{t.nav[key]}</a>
             ))}
           </div>
           
           <div className="flex items-center gap-4 border-slate-300 rtl:border-r rtl:pr-4 ltr:border-l ltr:pl-4">
-             <button onClick={() => setIsDark(!isDark)} className="p-2 rounded-full hover:bg-slate-500/10 transition" aria-label="Toggle Dark Mode">
+             <button onClick={() => setIsDark(!isDark)} className={`p-2 rounded-full transition ${isDark ? 'hover:bg-slate-800' : 'hover:bg-slate-100'}`} aria-label="Toggle Dark Mode">
                {isDark ? <Sun size={18} /> : <Moon size={18} />}
              </button>
-             <button onClick={() => setLang(lang === 'he' ? 'en' : 'he')} className={`flex items-center gap-2 px-3 py-1 rounded border ${isDark ? 'border-slate-800' : 'border-slate-200'} hover:border-slate-400 transition font-assistant text-xs font-bold tracking-widest uppercase`}>
+             <button onClick={() => setLang(lang === 'he' ? 'en' : 'he')} className={`flex items-center gap-2 px-3 py-1 rounded border ${isDark ? 'border-slate-700 hover:border-slate-500' : 'border-slate-300 hover:border-slate-500'} transition font-assistant text-xs font-bold tracking-widest uppercase`}>
                {lang === 'he' ? 'EN' : 'HE'}
              </button>
              <div className="hidden sm:flex items-center gap-4">
-               <a href="https://www.linkedin.com/in/yaniv--levi/" target="_blank" rel="noreferrer" className="opacity-50 hover:opacity-100 transition"><Linkedin size={18} /></a>
-               <a href="tel:+972508623138" className="opacity-50 hover:opacity-100 transition"><Phone size={18} /></a>
+               <a href="https://www.linkedin.com/in/yaniv--levi/" target="_blank" rel="noreferrer" className={`transition ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`}><Linkedin size={18} /></a>
+               <a href="tel:+972508623138" className={`transition ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-900'}`}><Phone size={18} /></a>
              </div>
           </div>
         </div>
@@ -359,19 +359,19 @@ const App = () => {
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-12 relative pt-20 max-w-6xl mx-auto">
         <div className="space-y-8 text-start">
-          <p className="font-amatic text-4xl md:text-5xl opacity-50 smooth-reveal" style={{animationDelay: '0.1s'}}>{t.hero.greeting}</p>
-          <h1 className="font-amatic text-6xl md:text-8xl font-bold smooth-reveal tracking-wide text-slate-900 dark:text-white" style={{animationDelay: '0.2s'}}>{t.hero.role}</h1>
-          <div className={`w-16 h-[2px] ${isDark ? 'bg-white' : 'bg-slate-900'} smooth-reveal`} style={{animationDelay: '0.3s'}}></div>
+          <p className={`font-amatic text-4xl md:text-5xl smooth-reveal ${isDark ? 'text-slate-400' : 'text-slate-500'}`} style={{animationDelay: '0.1s'}}>{t.hero.greeting}</p>
+          <h1 className={`font-amatic text-6xl md:text-8xl font-bold smooth-reveal tracking-wide ${isDark ? 'text-white' : 'text-slate-900'}`} style={{animationDelay: '0.2s'}}>{t.hero.role}</h1>
+          <div className={`w-16 h-[2px] ${isDark ? 'bg-slate-700' : 'bg-slate-300'} smooth-reveal`} style={{animationDelay: '0.3s'}}></div>
           
-          <div className="space-y-6 max-w-4xl smooth-reveal opacity-90" style={{animationDelay: '0.4s'}}>
-            <h3 className="font-amatic text-4xl md:text-5xl font-bold mb-4 mt-8 text-slate-900 dark:text-white">{t.hero.whoAmI}</h3>
+          <div className="space-y-6 max-w-4xl smooth-reveal" style={{animationDelay: '0.4s'}}>
+            <h3 className={`font-amatic text-4xl md:text-5xl font-bold mb-4 mt-8 ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.hero.whoAmI}</h3>
             {t.hero.paragraphs.map((p, i) => (
-              <p key={i} className="font-assistant text-lg md:text-xl font-light leading-relaxed text-slate-600 dark:text-slate-300">{p}</p>
+              <p key={i} className={`font-assistant text-lg md:text-xl font-light leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{p}</p>
             ))}
           </div>
 
           <div className="pt-12 smooth-reveal text-center" style={{animationDelay: '0.6s'}}>
-            <a href="#about" className="animate-bounce inline-block opacity-30 hover:opacity-100 transition"><ArrowDown size={32} strokeWidth={1} /></a>
+            <a href="#about" className={`animate-bounce inline-block transition ${isDark ? 'text-slate-500 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}><ArrowDown size={32} strokeWidth={1} /></a>
           </div>
         </div>
       </section>
@@ -379,7 +379,7 @@ const App = () => {
       {/* About Section */}
       <section id="about" className={`py-32 ${isDark ? 'bg-slate-900/30' : 'bg-white'} border-y ${isDark ? 'border-slate-800' : 'border-slate-100'} px-6 md:px-12`}>
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-amatic text-5xl md:text-6xl mb-16 text-center font-bold tracking-wide">{t.about.title}</h2>
+          <h2 className={`font-amatic text-5xl md:text-6xl mb-16 text-center font-bold tracking-wide ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.about.title}</h2>
           <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
             <div className="md:w-1/3 w-full max-w-sm">
               <div className={`aspect-[3/4] ${isDark ? 'bg-slate-800' : 'bg-slate-100'} rounded-2xl overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl group`}>
@@ -389,12 +389,12 @@ const App = () => {
                     className="w-full h-full object-cover scale-105 group-hover:scale-100 transition duration-700" 
                     onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=800"; }}
                 />
-                <div className="absolute inset-0 border border-black/10 rounded-2xl m-4 pointer-events-none"></div>
+                <div className={`absolute inset-0 border rounded-2xl m-4 pointer-events-none ${isDark ? 'border-white/10' : 'border-black/10'}`}></div>
               </div>
             </div>
             <div className="md:w-2/3 space-y-8 text-start">
-              <p className="font-assistant text-xl md:text-2xl font-light leading-relaxed opacity-80">{t.about.p1}</p>
-              <p className="font-assistant text-xl md:text-2xl leading-relaxed opacity-90 font-medium italic border-s-4 border-slate-300 dark:border-slate-700 ps-6">{t.about.p2}</p>
+              <p className={`font-assistant text-xl md:text-2xl font-light leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{t.about.p1}</p>
+              <p className={`font-assistant text-xl md:text-2xl leading-relaxed font-medium italic border-s-4 ps-6 ${isDark ? 'border-slate-700 text-slate-200' : 'border-slate-300 text-slate-800'}`}>{t.about.p2}</p>
               <div className="pt-8">
                 <a href="/yaniv_cv.pdf" download="Yaniv_Levi_CV.pdf" className={`inline-flex items-center gap-3 px-8 py-4 ${isDark ? 'bg-white text-slate-950 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-700'} rounded-lg font-assistant font-semibold tracking-widest uppercase text-sm transition shadow-xl`}>
                   <Download size={16} /> {t.about.resumeBtn}
@@ -403,8 +403,8 @@ const App = () => {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12">
                 {t.about.hobbies.map((hobby) => (
                   <div key={hobby.id} className={`flex flex-col items-center gap-4 p-6 rounded-2xl border ${isDark ? 'bg-slate-800/50 border-slate-700' : 'bg-[#FDFBF9] border-slate-100'} text-center hover:-translate-y-1 transition duration-300`}>
-                    <hobby.Icon size={24} className="opacity-50" />
-                    <span className="font-assistant text-sm font-semibold tracking-wider opacity-70 uppercase">{hobby.name}</span>
+                    <hobby.Icon size={24} className={isDark ? 'text-slate-500' : 'text-slate-400'} />
+                    <span className={`font-assistant text-sm font-semibold tracking-wider uppercase ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{hobby.name}</span>
                   </div>
                 ))}
               </div>
@@ -416,52 +416,52 @@ const App = () => {
       {/* Case Studies */}
       <section id="work" className="py-32 px-6 md:px-12 max-w-6xl mx-auto">
         <div className="mb-20 text-center">
-          <h2 className="font-amatic text-6xl md:text-7xl font-bold mb-6">{t.work.title}</h2>
-          <div className="w-16 h-[2px] bg-slate-300 dark:bg-slate-700 mx-auto"></div>
+          <h2 className={`font-amatic text-6xl md:text-7xl font-bold mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.work.title}</h2>
+          <div className={`w-16 h-[2px] mx-auto ${isDark ? 'bg-slate-700' : 'bg-slate-300'}`}></div>
         </div>
-        <div className="flex flex-col border-t border-slate-200 dark:border-slate-800">
+        <div className={`flex flex-col border-t ${isDark ? 'border-slate-800' : 'border-slate-200'}`}>
           {t.work.projects.map((project, index) => (
-            <div key={project.id} className="group border-b border-slate-200 dark:border-slate-800 transition-all duration-500 cursor-default hover:bg-slate-500/5" onMouseEnter={() => setActiveProject(index)} onMouseLeave={() => setActiveProject(null)}>
+            <div key={project.id} className={`group border-b transition-all duration-500 cursor-default ${isDark ? 'border-slate-800 hover:bg-slate-800/50' : 'border-slate-200 hover:bg-slate-50'}`} onMouseEnter={() => setActiveProject(index)} onMouseLeave={() => setActiveProject(null)}>
               <div className="py-12 flex flex-col md:flex-row justify-between md:items-center gap-8 px-6 text-start">
                 <div className="flex items-center gap-8 md:w-1/3">
-                  <span className="font-amatic text-5xl font-bold opacity-20 w-12 group-hover:opacity-60 transition-opacity duration-500">0{index+1}</span>
+                  <span className={`font-amatic text-5xl font-bold w-12 transition-opacity duration-500 ${isDark ? 'text-slate-700 group-hover:text-slate-400' : 'text-slate-200 group-hover:text-slate-400'}`}>0{index+1}</span>
                   <div>
-                    <h3 className="font-assistant text-2xl font-bold tracking-tight">{project.company}</h3>
-                    <p className="font-assistant text-xs opacity-50 font-semibold tracking-[0.2em] mt-2 uppercase">{project.role}</p>
+                    <h3 className={`font-assistant text-2xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>{project.company}</h3>
+                    <p className={`font-assistant text-xs font-semibold tracking-[0.2em] mt-2 uppercase ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>{project.role}</p>
                   </div>
                 </div>
                 <div className="md:w-1/2">
-                  <p className="font-assistant text-lg opacity-70 font-light group-hover:opacity-100 transition duration-500 leading-relaxed">{project.description}</p>
+                  <p className={`font-assistant text-lg font-light transition duration-500 leading-relaxed ${isDark ? 'text-slate-400 group-hover:text-slate-200' : 'text-slate-500 group-hover:text-slate-800'}`}>{project.description}</p>
                 </div>
                 <div className="hidden md:flex items-center justify-end w-12">
-                  <ArrowUpRight className={`opacity-20 transition-all duration-500 ${activeProject === index ? 'opacity-100' : ''} ${isRTL ? 'group-hover:-rotate-45' : 'group-hover:rotate-45'}`} size={32} strokeWidth={1} />
+                  <ArrowUpRight className={`transition-all duration-500 ${activeProject === index ? 'opacity-100' : 'opacity-0'} ${isDark ? 'text-slate-300' : 'text-slate-400'} ${isRTL ? 'group-hover:-rotate-45' : 'group-hover:rotate-45'}`} size={32} strokeWidth={1} />
                 </div>
               </div>
               <div className={`grid transition-all duration-500 ease-in-out ${activeProject === index ? 'grid-rows-[1fr] opacity-100 mb-12 px-6' : 'grid-rows-[0fr] opacity-0 px-6'}`}>
                 <div className="overflow-hidden">
-                  <div className="pt-10 border-t border-dashed border-slate-200 dark:border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-16 text-start">
+                  <div className={`pt-10 border-t border-dashed grid grid-cols-1 md:grid-cols-2 gap-16 text-start ${isDark ? 'border-slate-700' : 'border-slate-200'}`}>
                     <div className="space-y-12">
                        <div>
-                         <h4 className="font-assistant font-semibold text-xs uppercase tracking-[0.2em] opacity-40 mb-4 flex items-center gap-2"><Layout size={14} /> {t.work.labels.challenge}</h4>
-                         <p className={`font-assistant text-lg font-light leading-relaxed ${isDark ? 'bg-slate-800/30' : 'bg-[#FDFBF9]'} p-7 rounded-2xl border ${isDark ? 'border-slate-800' : 'border-slate-100'}`}>{project.challenge}</p>
+                         <h4 className={`font-assistant font-semibold text-xs uppercase tracking-[0.2em] mb-4 flex items-center gap-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}><Layout size={14} /> {t.work.labels.challenge}</h4>
+                         <p className={`font-assistant text-lg font-light leading-relaxed p-7 rounded-2xl border ${isDark ? 'bg-slate-800/30 border-slate-700 text-slate-300' : 'bg-[#FDFBF9] border-slate-200 text-slate-600'}`}>{project.challenge}</p>
                        </div>
                        <div>
-                         <h4 className="font-assistant font-semibold text-xs uppercase tracking-[0.2em] opacity-40 mb-4 flex items-center gap-2"><Cpu size={14} /> {t.work.labels.solution}</h4>
-                         <p className={`font-assistant text-lg font-light leading-relaxed ${isDark ? 'bg-slate-800/30' : 'bg-[#FDFBF9]'} p-7 rounded-2xl border ${isDark ? 'border-slate-800' : 'border-slate-100'}`}>{project.solution}</p>
+                         <h4 className={`font-assistant font-semibold text-xs uppercase tracking-[0.2em] mb-4 flex items-center gap-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}><Cpu size={14} /> {t.work.labels.solution}</h4>
+                         <p className={`font-assistant text-lg font-light leading-relaxed p-7 rounded-2xl border ${isDark ? 'bg-slate-800/30 border-slate-700 text-slate-300' : 'bg-[#FDFBF9] border-slate-200 text-slate-600'}`}>{project.solution}</p>
                        </div>
                     </div>
                     <div className="space-y-12">
                       <div>
-                        <h4 className="font-assistant font-semibold text-xs uppercase tracking-[0.2em] opacity-40 mb-4 flex items-center gap-2"><Plus size={14} /> {t.work.labels.impact}</h4>
-                        <div className={`${isDark ? 'bg-white text-slate-950 shadow-white/5' : 'bg-slate-900 text-white shadow-black/20'} p-8 rounded-2xl shadow-xl`}>
+                        <h4 className={`font-assistant font-semibold text-xs uppercase tracking-[0.2em] mb-4 flex items-center gap-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}><Plus size={14} /> {t.work.labels.impact}</h4>
+                        <div className={`p-8 rounded-2xl shadow-xl ${isDark ? 'bg-slate-800 text-white' : 'bg-slate-900 text-white'}`}>
                           <p className="font-assistant text-xl font-medium leading-snug italic tracking-wide">"{project.impact}"</p>
                         </div>
                       </div>
                       <div>
-                        <h4 className="font-assistant font-semibold text-xs uppercase tracking-[0.2em] opacity-40 mb-6 flex items-center gap-2"><FileText size={14} /> {t.work.labels.artifacts}</h4>
+                        <h4 className={`font-assistant font-semibold text-xs uppercase tracking-[0.2em] mb-6 flex items-center gap-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}><FileText size={14} /> {t.work.labels.artifacts}</h4>
                         <div className="flex flex-wrap gap-3">
                           {project.artifacts.map((art, i) => (
-                            <span key={i} className={`flex items-center gap-2 px-4 py-2 ${isDark ? 'bg-slate-800 border-slate-700 text-slate-300' : 'bg-white border-slate-200 text-slate-600'} border rounded-full text-xs font-semibold uppercase tracking-wider shadow-sm`}>
+                            <span key={i} className={`flex items-center gap-2 px-4 py-2 border rounded-full text-xs font-semibold uppercase tracking-wider shadow-sm ${isDark ? 'bg-slate-800 border-slate-700 text-slate-300' : 'bg-white border-slate-200 text-slate-600'}`}>
                               {art.includes('Deck') ? <Presentation size={14} /> : <FileText size={14} />} {art}
                             </span>
                           ))}
@@ -476,29 +476,29 @@ const App = () => {
         </div>
       </section>
 
-      {/* Builder Section (Updated with detailed AI projects) */}
-      <section id="builder" className={`py-32 ${isDark ? 'bg-slate-900/40' : 'bg-[#F9F9F9]'} border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} px-6 md:px-12`}>
+      {/* Builder Section */}
+      <section id="builder" className={`py-32 border-t px-6 md:px-12 ${isDark ? 'bg-slate-900/40 border-slate-800' : 'bg-[#F9F9F9] border-slate-200'}`}>
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="font-amatic text-6xl md:text-7xl font-bold mb-6">{t.builder.title}</h2>
-            <div className="w-16 h-[2px] bg-slate-300 dark:bg-slate-700 mx-auto mb-8"></div>
-            <p className="font-assistant text-xl opacity-70 max-w-2xl mx-auto leading-relaxed font-light">{t.builder.subtitle}</p>
+            <h2 className={`font-amatic text-6xl md:text-7xl font-bold mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.builder.title}</h2>
+            <div className={`w-16 h-[2px] mx-auto mb-8 ${isDark ? 'bg-slate-700' : 'bg-slate-300'}`}></div>
+            <p className={`font-assistant text-xl max-w-2xl mx-auto leading-relaxed font-light ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.builder.subtitle}</p>
           </div>
           <div className="flex flex-col text-start">
             {t.builder.projects.map((proj, idx) => (
-              <div key={idx} className={`group flex flex-col md:flex-row md:items-start gap-6 md:gap-12 py-12 border-b ${isDark ? 'border-slate-800' : 'border-slate-200'} last:border-0 hover:bg-slate-500/5 transition-all duration-500 px-8 -mx-8 rounded-3xl`}>
+              <div key={idx} className={`group flex flex-col md:flex-row md:items-start gap-6 md:gap-12 py-12 border-b last:border-0 transition-all duration-500 px-8 -mx-8 rounded-3xl ${isDark ? 'border-slate-800 hover:bg-slate-800/50' : 'border-slate-200 hover:bg-white'}`}>
                 <div className="flex items-start gap-6 md:w-1/3 pt-2">
-                  <div className={`w-14 h-14 ${isDark ? 'bg-slate-800' : 'bg-white'} rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition duration-500 shrink-0`}>
+                  <div className={`w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition duration-500 shrink-0 ${isDark ? 'bg-slate-800 text-slate-300' : 'bg-white text-slate-600'}`}>
                     {proj.icon}
                   </div>
-                  <h3 className="font-assistant text-2xl font-bold tracking-tight mt-3">{proj.title}</h3>
+                  <h3 className={`font-assistant text-2xl font-bold tracking-tight mt-3 ${isDark ? 'text-white' : 'text-slate-900'}`}>{proj.title}</h3>
                 </div>
                 <div className="md:w-2/3 flex flex-col md:flex-row items-start justify-between gap-8">
                    <div className="space-y-4">
-                     <p className="font-assistant text-xl font-bold opacity-90 leading-relaxed text-slate-800 dark:text-slate-200">{proj.subtitle}</p>
-                     <p className="font-assistant text-lg font-light opacity-80 group-hover:opacity-100 transition duration-500 leading-relaxed text-slate-600 dark:text-slate-400">{proj.desc}</p>
+                     <p className={`font-assistant text-xl font-bold leading-relaxed ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>{proj.subtitle}</p>
+                     <p className={`font-assistant text-lg font-light transition duration-500 leading-relaxed ${isDark ? 'text-slate-400 group-hover:text-slate-300' : 'text-slate-600 group-hover:text-slate-900'}`}>{proj.desc}</p>
                    </div>
-                   <a href="https://github.com/yanivle1-dotcom?tab=repositories" target="_blank" rel="noreferrer" className="opacity-30 hover:opacity-100 hover:scale-110 transition-all shrink-0 mt-2">
+                   <a href="https://github.com/yanivle1-dotcom?tab=repositories" target="_blank" rel="noreferrer" className={`transition-all shrink-0 mt-2 ${isDark ? 'text-slate-600 hover:text-white' : 'text-slate-300 hover:text-slate-900'}`}>
                      <Github size={28} strokeWidth={1.5} />
                    </a>
                 </div>
@@ -510,43 +510,48 @@ const App = () => {
 
       {/* Experience Timeline */}
       <section id="experience" className="py-32 px-6 md:px-12 max-w-4xl mx-auto">
-        <h2 className="font-amatic text-6xl md:text-7xl font-bold mb-24 text-center tracking-wide">{t.experience.title}</h2>
-        <div className={`relative border-s-2 ${isDark ? 'border-slate-800' : 'border-slate-200'} space-y-20 py-4 ms-6 md:ms-12`}>
+        <h2 className={`font-amatic text-6xl md:text-7xl font-bold mb-24 text-center tracking-wide ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.experience.title}</h2>
+        <div className={`relative border-s-2 space-y-20 py-4 ms-6 md:ms-12 ${isDark ? 'border-slate-800' : 'border-slate-200'}`}>
           {t.experience.jobs.map((job, idx) => (
             <div key={idx} className="relative ps-12 group text-start">
-              <div className={`absolute -start-[11px] top-2 w-5 h-5 ${isDark ? 'bg-slate-950 border-slate-700' : 'bg-white border-slate-300'} border-2 rounded-full group-hover:bg-slate-500 group-hover:border-slate-500 transition duration-500 shadow-sm`}></div>
+              <div className={`absolute -start-[11px] top-2 w-5 h-5 border-2 rounded-full transition duration-500 shadow-sm ${isDark ? 'bg-slate-950 border-slate-700 group-hover:bg-slate-700 group-hover:border-slate-500' : 'bg-white border-slate-300 group-hover:bg-slate-300 group-hover:border-slate-500'}`}></div>
               <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-4 gap-4">
-                <h3 className="font-assistant text-2xl font-bold tracking-tight">{job.company} <span className="opacity-30 font-light mx-4">/</span> <span className="text-xl opacity-70 font-medium">{job.role}</span></h3>
-                <span className={`font-assistant text-xs font-semibold tracking-[0.1em] ${isDark ? 'bg-slate-800 text-slate-400' : 'bg-slate-100 text-slate-500'} px-4 py-2 rounded-md uppercase`}>{job.period}</span>
+                <h3 className={`font-assistant text-2xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  {job.company} <span className={`font-light mx-4 ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>/</span> <span className={`text-xl font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{job.role}</span>
+                </h3>
+                <span className={`font-assistant text-xs font-semibold tracking-[0.1em] px-4 py-2 rounded-md uppercase ${isDark ? 'bg-slate-800 text-slate-400' : 'bg-slate-100 text-slate-500'}`}>{job.period}</span>
               </div>
-              <p className="font-assistant text-lg font-light opacity-80 mt-4 leading-relaxed max-w-2xl">{job.desc}</p>
+              <p className={`font-assistant text-lg font-light mt-4 leading-relaxed max-w-2xl ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{job.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Methodology Section - The Curved S-Curve */}
-      <section id="methodology" className={`py-32 ${isDark ? 'bg-slate-900/30' : 'bg-[#F9F9F9]'} border-t ${isDark ? 'border-slate-800' : 'border-slate-200'} overflow-hidden`}>
+      {/* Methodology Section */}
+      <section id="methodology" className={`py-32 border-t overflow-hidden ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-[#F9F9F9] border-slate-200'}`}>
         <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <h2 className="font-amatic text-6xl md:text-7xl font-bold mb-32 text-center">{t.methodology.title}</h2>
+          <h2 className={`font-amatic text-6xl md:text-7xl font-bold mb-32 text-center ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.methodology.title}</h2>
           <div className="relative max-w-5xl mx-auto">
-            <div className={`absolute top-0 bottom-0 start-8 md:start-1/2 w-[1px] ${isDark ? 'bg-slate-800' : 'bg-slate-300'} md:-translate-x-1/2 rtl:md:translate-x-1/2`}></div>
+            <div className={`absolute top-0 bottom-0 start-8 md:start-1/2 w-[1px] md:-translate-x-1/2 rtl:md:translate-x-1/2 ${isDark ? 'bg-slate-800' : 'bg-slate-300'}`}></div>
             {t.methodology.steps.map((step, idx) => {
               const isEven = idx % 2 === 0;
               return (
                 <div key={idx} className="relative flex items-center mb-24 md:mb-32 group">
-                  <div className={`absolute top-0 md:top-1/2 md:-translate-y-1/2 start-8 md:start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-16 h-16 ${isDark ? 'bg-slate-950 border-slate-800 text-white' : 'bg-[#F9F9F9] border-slate-200 text-slate-500'} border-2 rounded-full flex items-center justify-center z-10 group-hover:bg-slate-900 group-hover:text-white transition-all duration-700 shadow-md`}>
-                    <span className="font-amatic text-4xl font-bold opacity-60 group-hover:opacity-100">0{idx + 1}</span>
+                  <div className={`absolute top-0 md:top-1/2 md:-translate-y-1/2 start-8 md:start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-16 h-16 border-2 rounded-full flex items-center justify-center z-10 transition-all duration-700 shadow-md ${isDark ? 'bg-slate-950 border-slate-800 group-hover:bg-slate-800' : 'bg-[#F9F9F9] border-slate-300 group-hover:bg-slate-800'}`}>
+                    <span className={`font-amatic text-4xl font-bold transition-all ${isDark ? 'text-slate-600 group-hover:text-white' : 'text-slate-400 group-hover:text-white'}`}>0{idx + 1}</span>
                   </div>
                   <div className="md:hidden w-full ps-24 pt-2 text-start">
-                    <div className={`${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'} p-8 rounded-2xl border shadow-sm`}><h3 className="font-assistant text-xl font-bold mb-3">{step.title}</h3><p className="font-assistant font-light opacity-80 leading-relaxed">{step.desc}</p></div>
+                    <div className={`p-8 rounded-2xl border shadow-sm ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
+                      <h3 className={`font-assistant text-xl font-bold mb-3 ${isDark ? 'text-white' : 'text-slate-900'}`}>{step.title}</h3>
+                      <p className={`font-assistant font-light leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{step.desc}</p>
+                    </div>
                   </div>
                   <div className={`hidden md:flex w-full ${isEven ? 'justify-start text-start' : 'justify-end text-end'}`}>
                     <div className={`w-[44%]`}>
-                      <div className={`relative ${isDark ? 'bg-slate-900/50 border-slate-800' : 'bg-white border-slate-100'} p-10 rounded-2xl border shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-500`}>
-                        <div className={`absolute top-1/2 -translate-y-1/2 w-16 h-[1px] ${isDark ? 'bg-slate-800' : 'bg-slate-300'} group-hover:bg-slate-900 transition-colors ${isEven ? '-end-16' : '-start-16'}`}></div>
-                        <h3 className="font-assistant text-2xl font-bold mb-3 tracking-tight">{step.title}</h3>
-                        <p className="font-assistant text-lg font-light opacity-80 leading-relaxed">{step.desc}</p>
+                      <div className={`relative p-10 rounded-2xl border shadow-sm group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-500 ${isDark ? 'bg-slate-900/50 border-slate-800' : 'bg-white border-slate-100'}`}>
+                        <div className={`absolute top-1/2 -translate-y-1/2 w-16 h-[1px] transition-colors ${isDark ? 'bg-slate-800 group-hover:bg-slate-600' : 'bg-slate-300 group-hover:bg-slate-500'} ${isEven ? '-end-16' : '-start-16'}`}></div>
+                        <h3 className={`font-assistant text-2xl font-bold mb-3 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>{step.title}</h3>
+                        <p className={`font-assistant text-lg font-light leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{step.desc}</p>
                       </div>
                     </div>
                   </div>
@@ -558,24 +563,24 @@ const App = () => {
       </section>
 
       {/* Footer & Contact Form */}
-      <footer id="contact" className={`py-40 px-6 md:px-12 ${isDark ? 'bg-slate-950 border-slate-800' : 'bg-white border-slate-200'} border-t text-center overflow-hidden relative`}>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-[0.02] pointer-events-none font-amatic font-bold text-[25vw] whitespace-nowrap -z-10 select-none uppercase tracking-tighter">LEVI YANIV LEVI YANIV</div>
+      <footer id="contact" className={`py-40 px-6 md:px-12 border-t text-center overflow-hidden relative ${isDark ? 'bg-slate-950 border-slate-800' : 'bg-white border-slate-200'}`}>
+        <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none font-amatic font-bold text-[25vw] whitespace-nowrap -z-10 select-none uppercase tracking-tighter ${isDark ? 'text-white/[0.02]' : 'text-black/[0.02]'}`}>LEVI YANIV LEVI YANIV</div>
         <div className="max-w-4xl mx-auto flex flex-col items-center">
-          <h2 className="font-amatic text-7xl md:text-[9rem] font-bold mb-10 leading-none hover:scale-105 transition duration-700 cursor-default">{t.footer.talk}</h2>
-          <p className="font-assistant text-xl md:text-2xl font-light opacity-80 leading-relaxed max-w-2xl mb-16">{t.footer.desc}</p>
+          <h2 className={`font-amatic text-7xl md:text-[9rem] font-bold mb-10 leading-none hover:scale-105 transition duration-700 cursor-default ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.footer.talk}</h2>
+          <p className={`font-assistant text-xl md:text-2xl font-light leading-relaxed max-w-2xl mb-16 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.footer.desc}</p>
           <div className="w-full max-w-lg mb-24">
             {isSubmitted ? (
               <div className="flex flex-col items-center gap-4 py-12 animate-in fade-in zoom-in duration-500">
                 <CheckCircle2 size={56} className="text-green-500" />
-                <p className="font-assistant text-lg font-bold">{t.footer.successMsg}</p>
+                <p className={`font-assistant text-lg font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.footer.successMsg}</p>
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div className={`relative rounded-xl border transition-all duration-300 ${isDark ? 'bg-slate-900 border-slate-800 focus-within:border-white' : 'bg-white border-slate-200 focus-within:border-slate-900'}`}>
-                  <input type="email" required placeholder={t.footer.emailPlaceholder} value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full p-4 bg-transparent outline-none font-assistant text-lg font-light text-center" />
+                  <input type="email" required placeholder={t.footer.emailPlaceholder} value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className={`w-full p-4 bg-transparent outline-none font-assistant text-lg font-light text-center ${isDark ? 'text-white' : 'text-slate-900'}`} />
                 </div>
                 <div className={`relative rounded-xl border transition-all duration-300 ${isDark ? 'bg-slate-900 border-slate-800 focus-within:border-white' : 'bg-white border-slate-200 focus-within:border-slate-900'}`}>
-                  <textarea required rows="4" placeholder={t.footer.messagePlaceholder} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="w-full p-4 bg-transparent outline-none font-assistant text-lg font-light text-center resize-none" />
+                  <textarea required rows="4" placeholder={t.footer.messagePlaceholder} value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className={`w-full p-4 bg-transparent outline-none font-assistant text-lg font-light text-center resize-none ${isDark ? 'text-white' : 'text-slate-900'}`} />
                 </div>
                 <button type="submit" disabled={isSubmitting} className={`w-full py-4 rounded-xl font-assistant font-bold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-3 ${isDark ? 'bg-white text-slate-950 hover:bg-slate-200' : 'bg-slate-900 text-white hover:bg-slate-800'} ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}>
                   {isSubmitting ? '...' : <><Send size={18} /> {t.footer.sendBtn}</>}
@@ -584,11 +589,11 @@ const App = () => {
             )}
           </div>
           <div className="flex justify-center items-center gap-8 md:gap-12">
-            <a href="tel:+972508623138" className={`p-5 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-300 shadow-sm hover:-translate-y-1`} title="PHONE"><Phone size={24} strokeWidth={1.5} /></a>
-            <a href="mailto:yanivle1@gmail.com" className={`p-5 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-300 shadow-sm hover:-translate-y-1`} title="EMAIL"><Mail size={24} strokeWidth={1.5} /></a>
-            <a href="https://www.linkedin.com/in/yaniv--levi/" target="_blank" rel="noreferrer" className={`p-5 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'} rounded-full transition-all duration-300 shadow-sm hover:-translate-y-1`} title="LINKEDIN"><Linkedin size={24} strokeWidth={1.5} /></a>
+            <a href="tel:+972508623138" className={`p-5 rounded-full transition-all duration-300 shadow-sm hover:-translate-y-1 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'}`} title="PHONE"><Phone size={24} strokeWidth={1.5} /></a>
+            <a href="mailto:yanivle1@gmail.com" className={`p-5 rounded-full transition-all duration-300 shadow-sm hover:-translate-y-1 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'}`} title="EMAIL"><Mail size={24} strokeWidth={1.5} /></a>
+            <a href="https://www.linkedin.com/in/yaniv--levi/" target="_blank" rel="noreferrer" className={`p-5 rounded-full transition-all duration-300 shadow-sm hover:-translate-y-1 ${isDark ? 'bg-slate-900 text-white hover:bg-white hover:text-slate-950' : 'bg-slate-50 text-slate-700 hover:bg-slate-900 hover:text-white'}`} title="LINKEDIN"><Linkedin size={24} strokeWidth={1.5} /></a>
           </div>
-          <p className="font-assistant opacity-30 text-[10px] font-bold tracking-[0.3em] pt-24 uppercase">{t.footer.rights}</p>
+          <p className={`font-assistant text-[10px] font-bold tracking-[0.3em] pt-24 uppercase ${isDark ? 'text-slate-600' : 'text-slate-400'}`}>{t.footer.rights}</p>
         </div>
       </footer>
     </div>
